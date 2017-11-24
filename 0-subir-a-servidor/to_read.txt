@@ -1,0 +1,4 @@
+Replace:
+  http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/
+for:
+  http://languagecreativityandidentity.digital-speck.com/

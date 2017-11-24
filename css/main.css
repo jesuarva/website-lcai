@@ -15,8 +15,8 @@ body, html {
 header.container {
 	margin-top: 0px;
 	margin-bottom: 0px;
-  padding-top: 30px;
-  max-width: 80%;
+  padding-top: 20px;
+  max-width: 83%;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -43,7 +43,7 @@ a {
 a:hover,
 a:focus {
   color: #004d00;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 img:hover
@@ -58,8 +58,8 @@ header .navbar-brand {
   left: -60px;*/
 }
 .container-fluid {
-  background-color: rgba(255, 255, 255, 0.4);
-  padding: 15px 0px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px 0px 15px 15px;
 }
 
 #myCarousel {
@@ -95,7 +95,7 @@ header .navbar-brand {
 
 
 .logo-excelencia-container {
-  width: 60%;
+  width: 25%;
   margin: auto;
 }
 .logo-excelencia {
@@ -135,6 +135,7 @@ header .navbar-brand {
 	object-position: cover;
 }
 
+/* Styling Members section */
 .img-members {
   width: 100%;
   max-height: 120px;
@@ -181,4 +182,20 @@ header .navbar-brand {
 .img-circle {
   display: block;
   margin: auto;
+}
+
+.featurette-image {
+	width: 80%;
+}
+
+/* MODAL styles */
+.modal {
+	z-index: 2000;
+}
+.modal-trigger {
+		outline: 1px white;
+		cursor: pointer;
+}
+.modal-dialog {
+	width: 70%;
 }

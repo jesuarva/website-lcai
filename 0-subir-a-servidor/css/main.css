@@ -1,0 +1,184 @@
+/** {
+	outline: 1px solid red;
+}
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body, html {
+  /*background-color: grey;*/
+	font-family: 'Open Sans', sans-serif;
+	line-height: 2;
+  color: 	#093a09;
+}
+
+header.container {
+	margin-top: 0px;
+	margin-bottom: 0px;
+  padding-top: 30px;
+  max-width: 80%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1071;
+  /*background: rgba(76, 175, 80, 0.3);*/
+}
+
+p {
+	font-size: 24px;
+	font-weight: 400
+	/*text-justify: inter-word;*/
+	text-align: center;
+	margin: 20px 5px;
+}
+
+footer p {
+	font-size: 10px;
+}
+
+a {
+  color: #009900;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #004d00;
+  text-decoration: underline;
+}
+
+img:hover
+
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+  margin-left: 0;
+	padding: 15px 0;
+}
+header .navbar-brand {
+	font-size: 35px;
+  /*position: relative;
+  left: -60px;*/
+}
+.container-fluid {
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 15px 0px;
+}
+
+#myCarousel {
+	margin-bottom:70px;
+}
+
+.footer-container {
+/*	position: fixed;
+	bottom: 0px;
+	left: 15%;*/
+}
+
+#slider-jesuarva {
+  max-height: 1200px;
+}
+
+.img-carousel {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  margin: 0px;
+  padding: 0px;
+}
+
+.featurette, .row-investigadores {
+  margin-bottom: 80px;
+}
+.featurette-image {
+  height: 160px;
+  width: 100%
+  object-fit: cover;
+}
+
+
+.logo-excelencia-container {
+  width: 60%;
+  margin: auto;
+}
+.logo-excelencia {
+  width: 100%;
+}
+
+.container {
+	max-width: 80%;
+}
+
+.sub-header h1{
+	margin: 50px 0px 10px 0px;
+}
+
+.custom-hr-container {
+  padding: 0;
+}
+.custom-hr {
+	border: 0;
+	height: 1px;
+	background: #333;
+	background-image: linear-gradient(to right, #ccc, #333, #ccc);
+  margin: 15px 0px 30px 0px;
+
+}
+
+.proyectos-row {
+	/*max-height: 300px !important;*/
+}
+
+.proyecto-descripcion {
+	/*height: 64px;*/
+}
+.img-proyecto {
+	width: 100%;
+	max-height: 240px;
+	object-position: cover;
+}
+
+.img-members {
+  width: 100%;
+  max-height: 120px;
+  object-position: cover;
+}
+
+.noVisible {
+	/*visibility: hidden;*/
+	display: none;
+}
+
+.members {
+	/*text-align: center;*/
+}
+
+.memberTitle {
+	color: red;
+	text-align: center;
+}
+
+.members-list p, .proyectos-row p{
+  font-size: 16px;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+
+.row-phdTesis p {
+  margin: 10px 5px 30px 5px;
+}
+
+.img-circle-container {
+  margin: 0 auto;
+}
+
+
+.img-circle {
+  display: block;
+  margin: auto;
+}

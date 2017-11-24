@@ -72,27 +72,27 @@ $(function () {
 
 	// DROPDOWN HOVER
 	$( "#header-dropdown" )
-  .mouseenter(function() {
-		// console.log('hover in : '+this.target.nodeName);
-		// e.preventDefault();
-		// $('.dropdown-toggle').trigger('click');
-		$('#header-dropdown').toggleClass('open');
-		// onClick go to 'members'
-		$('.dropdown-toggle').click(function( e ){
-			e.preventDefault();
-			// window.location = "http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/miembros.html";
-			if ($('#idioma-cambia').attr('idioma') === 'en') {
-				window.location = "http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/miembros.html?idioma=en";
-		} else {
-			window.location = "http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/miembros.html";
-		}
-		});
-  })
-  .mouseleave(function() {
-    // console.log('hover out');
-		// $('.dropdown-toggle').trigger('click');
-		$('#header-dropdown').toggleClass('open');
-  });
+		.mouseenter(function() {
+			// console.log('hover in : '+this.target.nodeName);
+			// e.preventDefault();
+			// $('.dropdown-toggle').trigger('click');
+			$('#header-dropdown').toggleClass('open');
+			// onClick go to 'members'
+			$('.dropdown-toggle').click(function( e ){
+				e.preventDefault();
+				// window.location = "http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/miembros.html";
+				if ($('#idioma-cambia').attr('idioma') === 'en') {
+					window.location = "http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/miembros.html?idioma=en";
+				} else {
+					window.location = "http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/miembros.html";
+				}
+			});
+  	})
+		.mouseleave(function() {
+	    // console.log('hover out');
+			// $('.dropdown-toggle').trigger('click');
+			$('#header-dropdown').toggleClass('open');
+  	});
 	// END // DROPDOWN HOVER
 
 	// // MEMBERS ON HOVER AD POSITION
