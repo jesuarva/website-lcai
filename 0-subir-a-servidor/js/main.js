@@ -72,27 +72,27 @@ $(function () {
 
 	// DROPDOWN HOVER
 	$( "#header-dropdown" )
-  .mouseenter(function() {
-		// console.log('hover in : '+this.target.nodeName);
-		// e.preventDefault();
-		// $('.dropdown-toggle').trigger('click');
-		$('#header-dropdown').toggleClass('open');
-		// onClick go to 'members'
-		$('.dropdown-toggle').click(function( e ){
-			e.preventDefault();
-			// window.location = "http://languagecreativityandidentity.digital-speck.com/miembros.html";
-			if ($('#idioma-cambia').attr('idioma') === 'en') {
-				window.location = "http://languagecreativityandidentity.digital-speck.com/miembros.html?idioma=en";
-		} else {
-			window.location = "http://languagecreativityandidentity.digital-speck.com/miembros.html";
-		}
-		});
-  })
-  .mouseleave(function() {
-    // console.log('hover out');
-		// $('.dropdown-toggle').trigger('click');
-		$('#header-dropdown').toggleClass('open');
-  });
+		.mouseenter(function() {
+			// console.log('hover in : '+this.target.nodeName);
+			// e.preventDefault();
+			// $('.dropdown-toggle').trigger('click');
+			$('#header-dropdown').toggleClass('open');
+			// onClick go to 'members'
+			$('.dropdown-toggle').click(function( e ){
+				e.preventDefault();
+				// window.location = "http://languagecreativityandidentity.digital-speck.com/miembros.html";
+				if ($('#idioma-cambia').attr('idioma') === 'en') {
+					window.location = "http://languagecreativityandidentity.digital-speck.com/miembros.html?idioma=en";
+				} else {
+					window.location = "http://languagecreativityandidentity.digital-speck.com/miembros.html";
+				}
+			});
+  	})
+		.mouseleave(function() {
+	    // console.log('hover out');
+			// $('.dropdown-toggle').trigger('click');
+			$('#header-dropdown').toggleClass('open');
+  	});
 	// END // DROPDOWN HOVER
 
 	// // MEMBERS ON HOVER AD POSITION
