@@ -54,6 +54,7 @@ img:hover
 }
 header .navbar-brand {
 	font-size: 35px;
+	line-height: 1.1;
   /*position: relative;
   left: -60px;*/
 }
@@ -107,7 +108,7 @@ header .navbar-brand {
 }
 
 .sub-header h1{
-	margin: 50px 0px 10px 0px;
+	margin: 25px 0px 10px 0px;
 }
 
 .custom-hr-container {
@@ -120,6 +121,10 @@ header .navbar-brand {
 	background-image: linear-gradient(to right, #ccc, #333, #ccc);
   margin: 15px 0px 30px 0px;
 
+}
+
+.idioma-cambia {
+	cursor: pointer;
 }
 
 .proyectos-row {
@@ -199,3 +204,19 @@ header .navbar-brand {
 .modal-dialog {
 	width: 70%;
 }
+.modal-header {
+	color: #009900;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+.modal-content {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Formn styles */
+/* this dosn't work */
+/*iframe .freebirdFormviewerViewFormContent, iframe .freebirdFormviewerViewItemsItemItemTitle {
+	color: 	#093a09;
+}*/
+/*iframe .freebirdFormviewerViewHeaderRequiredLegend {
+	display: none !important;
+}*/
