@@ -5,7 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-body, html {
+body, html{
   /*background-color: grey;*/
 	font-family: 'Open Sans', sans-serif;
 	line-height: 2;
@@ -45,8 +45,53 @@ a:focus {
   color: #004d00;
   text-decoration: none;
 }
-
-img:hover
+.img-proyecto {
+	-webkit-filter: grayscale(40%);
+	filter: grayscale(40%);
+	-webkit-transform: scale(0.9);
+	transform: scale(0.9);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.img-proyecto:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+	-webkit-animation: flash 2s;
+	animation: flash 2s;
+}
+@-webkit-keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes flash {
+	0% {
+		opacity: .4;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.img-members, .img-circle, .featurette-image {
+	-webkit-filter: grayscale(30%);
+	filter: grayscale(30%);
+	-webkit-transform: scale(0.9);
+	transform: scale(0.9);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+.img-members:hover, .img-circle:hover, .featurette-image:hover {
+	-webkit-filter: grayscale(0);
+	filter: grayscale(0);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
 
 .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
   margin-left: 0;
@@ -54,7 +99,7 @@ img:hover
 }
 header .navbar-brand {
 	font-size: 35px;
-	line-height: 1.1;
+	/*line-height: 1.1;*/
   /*position: relative;
   left: -60px;*/
 }
@@ -89,8 +134,8 @@ header .navbar-brand {
   margin-bottom: 80px;
 }
 .featurette-image {
-  height: 160px;
-  width: 100%
+  max-height: 140px;
+  width: 100%;
   object-fit: cover;
 }
 
@@ -137,14 +182,32 @@ header .navbar-brand {
 .img-proyecto {
 	width: 100%;
 	max-height: 240px;
-	object-position: cover;
+	object-fit: cover;
 }
 
 /* Styling Members section */
 .img-members {
   width: 100%;
   max-height: 120px;
-  object-position: cover;
+  object-fit: contain;
+	/*background-color: rgba(250, 250, 250, 0.7);*/
+}
+.img-background{
+	background-image: url('http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/cartel-y-folletos/2-nenufares.jpg');
+	background-size: cover;
+	position: relative;
+	z-index: -2;
+}
+.img-background:after {
+	content: "";
+	opacity: 0.5;
+	top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: -1;
 }
 
 .noVisible {
@@ -187,6 +250,9 @@ header .navbar-brand {
 .img-circle {
   display: block;
   margin: auto;
+	object-fit: cover;
+	/*background-color: #f5f5fb;*/
+	background-color: rgba(250, 250, 250, 0.9);
 }
 
 .featurette-image {
@@ -220,3 +286,75 @@ header .navbar-brand {
 /*iframe .freebirdFormviewerViewHeaderRequiredLegend {
 	display: none !important;
 }*/
+
+@media only screen and (max-width: 768px) {
+	header .navbar-brand {
+		font-size: 24px;
+		line-height: 1.1;
+		max-width: 75%;
+		float: none;
+	}
+	.container {
+		max-width: 90%;
+	}
+	header.container {
+		max-width: 93%;
+	}
+	.icon-bar {
+		border: 1px solid #009900;
+	}
+	.sub-header h1 {
+		font-size: 24px;
+		margin-top: 12px;
+	}
+	#español p, #ingles p {
+		font-size: 17px;
+		line-height: 1.6;
+		/*text-align: justify;
+		text-justify: none;*/
+		padding: 20px 0;
+	}
+	.logo-excelencia-container {
+	  width: 60%;
+	  margin: auto;
+	}
+	#slider-jesuarva {
+	  max-height: 205px;
+	}
+	.img-carousel {
+	  width: 100%;
+	  height: 200px;
+	}
+	.modal-dialog {
+		width: 95%;
+	}
+	.modal-header > .modal-title {
+		font-size: 19px;
+		line-height: 1.6;
+	}
+	.img-proyecto {
+		max-height: 130px;
+	}
+	h2 {
+		font-size: 21px;
+	}
+	h3 {
+		font-size: 18px;
+	}
+	.members-list p, .proyectos-row p {
+		font-size: 13px;
+	}
+.img-proyecto, .img-members, .img-circle, .featurette-image {
+		-webkit-filter: grayscale(0%);
+		filter: grayscale(00%);
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+	.img-proyecto:hover, .img-members:hover, .img-circle:hover, .featurette-image:hover {
+		-webkit-filter: grayscale(0);
+		filter: grayscale(0);
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+}
