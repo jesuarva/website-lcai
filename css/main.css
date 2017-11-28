@@ -358,3 +358,13 @@ header .navbar-brand {
 	}
 
 }
+
+/* Target elements */
+*:target { color : red }
+*:target::before {
+	display: block;
+	content: "";
+	height: 100px;
+	margin: -100px 0 0;
+	/*border: 10px solid blue;*/
+}
