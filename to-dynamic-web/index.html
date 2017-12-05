@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
   <meta charset="utf-8">
-  <title>Eventos | Language Creativity and Identity</title>
+  <title>Acerca de | Language Creativity and Identity</title>
+  <!-- responsive view port -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- css -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -12,9 +13,12 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- javaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Tabletop.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
+  <script src="js/dynamic-home.js" ></script>
   <script src="js/main.js" ></script>
 </head>
-<body id="body-eventos">
+<body id="body-about">
   <!-- HEADER -->
   <header class="container">
     <nav class="navbar bg-white">
@@ -127,137 +131,66 @@
   </header>
   <!-- END-HEADER -->
 
-  <!-- SUB-HEADER -->
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <h1 class="col-md-4 español">Eventos</h1>
-        <h1 class="col-md-4 ingles noVisible">Events</h1>
+  <!-- BODY-CONTENT -->
+  <main>
+    <!-- CAROUSEL -->
+    <div class="container-fluid" id="slider-jesuarva">
+      <div class="row" >
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+          </ol>
+
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+            <div class="item active">
+              <figure>
+                <img src="img/nenufareshorizontal.jpg" alt="Carousel-1" class="img-resposive col-md-12 img-carousel">
+              </figure>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/delfi-de-la-Rua-Haiku-Pauwela-United-States.jpeg" alt="Carousel-2" class="img-resposive col-md-12 img-carousel">
+              </figure>
+            </div>
+
+            <div class="item">
+              <figure>
+                <img src="img/Jan-Schulz--Webdesigner-Stuttgart.jpeg" alt="Carousel-3" class="img-resposive col-md-12 img-carousel">
+              </figure>
+            </div>
+          </div>
+          <!-- Left and right controls -->
+          <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a> -->
       </div>
-      <div class="custom-hr-container col-md-12">
-        <hr class="custom-hr">
       </div>
     </div>
-  </div>
-  <!-- END SUB-HEADER -->
+    <!-- END-CAROUSEL -->
 
-  <!-- MAIN-CONTENT -->
-  <main class="container">
-    <div class="row proyectos-row">
-      <div id="evento1" class="col-md-6">
-        <div href="#Modal-1" class="modal-trigger" data-toggle="modal">
-          <!-- width 480 , heigth 245 -->
-          <img class="img-proyecto" src="cartel-y-folletos/1-recortada.png" alt="">
-          <div class="proyecto-descripcion español">
-            <h3>Language and culture englishes and translation studies.</h3>
-            <p>Ver cartel y folleto</p>
-          </div>
-          <div class="proyecto-descripcion ingles noVisible">
-            <h3>Language and culture englishes and translation studies.</h3>
-            <p>See poster and brochure</p>
-          </div>
-        </div>
-      </div>
-
-      <div id="evento2" class="col-md-6">
-        <div href="#Modal-2" class="modal-trigger" data-toggle="modal">
-          <!-- width 480 , heigth 245 -->
-          <img class="img-proyecto" src="cartel-y-folletos/2-nenufares.jpg" alt="">
-          <div class="proyecto-descripcion español">
-            <h3>Metaphor in discourse: recontextualizarion across modes and context.</h3>
-            <p>Ver cartel y folleto</p>
-          </div>
-          <div class="proyecto-descripcion ingles noVisible">
-            <h3>Metaphor in discourse: recontextualizarion across modes and context.</h3>
-            <p>See poster and brochure</p>
-          </div>
-        </div>
-      </div>
+    <!-- TEXT -->
+    <div id="español" class="container español" >
     </div>
-    <div class="row proyectos-row">
-      <div id="evento3" class="col-md-6">
-        <div href="#Modal-3" class="modal-trigger" data-toggle="modal">
-          <!-- width 480 , heigth 245 -->
-          <img class="img-proyecto" src="cartel-y-folletos/3-recortada.png" alt="">
-          <div class="proyecto-descripcion español">
-            <h3>Language across modes and cultures.</h3>
-            <p>Ver cartel y folleto</p>
-          </div>
-          <div class="proyecto-descripcion ingles noVisible">
-            <h3>Language across modes and cultures.</h3>
-            <p>See poster and brochure</p>
-          </div>
-        </div>
-      </div>
+    <div id="ingles" class="container ingles noVisible">
     </div>
-
-
+    <!-- END TEXT -->
+    <!-- LOGO -->
+    <div class="container logo-excelencia-container">
+      <img class="logo-excelencia" src="img/logo_excelencia_uam_fyl.jpg" alt="">
+    </div>
+    <!-- END LOGO -->
   </main>
-  <!-- Modal HTML -->
-  <div id="Modal-1" class="modal fade">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h2 class="text-center modal-title">Language and culture englishes and translation studies.</h2>
-              </div>
-              <div class="modal-body">
-                  <img class="img-responsive" alt="Cartel evneto Language and culture englishes and translation studies." title="Cartel evneto Language and culture englishes and translation studies." src="cartel-y-folletos/1-Programme-cartel-final-seminario-bsch-10-4-16.jpg">
-                  <hr class="featurette-divider">
-                  <img class="img-responsive" alt="Frontal del folleto para Language and culture englishes and translation studies." title="Frontal del folleto para Language and culture englishes and translation studies." src="cartel-y-folletos/1-folleto_versión-final-10-4-16-1.jpg">
-                  <hr class="featurette-divider">
-                  <img class="img-responsive" alt="Reverso del folleto para Language and culture englishes and translation studies." title="Reverso del folleto para Language and culture englishes and translation studies." src="cartel-y-folletos/1-folleto_versión-final-10-4-16-2.jpg">
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <div id="Modal-2" class="modal fade">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h2 class="text-center modal-title">Metaphor in discourse: recontextualizarion across modes and context.</h2>
-              </div>
-              <div class="modal-body">
-                  <img class="img-responsive" alt="Cartel evneto Metaphor in discourse: recontextualizarion across modes and context." title="Cartel evneto Metaphor in discourse: recontextualizarion across modes and context." src="cartel-y-folletos/2-cartel-27-sept-3-1.jpg">
-                  <hr class="featurette-divider">
-                  <img class="img-responsive" alt="Frontal folleto evneto Metaphor in discourse: recontextualizarion across modes and context." title="Frontal folleto evneto Metaphor in discourse: recontextualizarion across modes and context." src="cartel-y-folletos/2-folletto-27-9bis3-1.jpg">
-                  <hr class="featurette-divider">
-                  <img class="img-responsive" alt="Reverso folleto evneto Metaphor in discourse: recontextualizarion across modes and context." title="Reverso folleto evneto Metaphor in discourse: recontextualizarion across modes and context." src="cartel-y-folletos/2-folletto-27-9bis3-2.jpg">
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <div id="Modal-3" class="modal fade">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                  <h2 class="text-center modal-title">Language across modes and cultures.</h2>
-              </div>
-              <div class="modal-body">
-                  <img class="img-responsive" alt="Cartel evento Language across modes and cultures." title="Cartel evento Language across modes and cultures." src="cartel-y-folletos/3-cartel-seminario-lenguaje-y-creatividad-16-y-17-de-junio2014-1.jpg">
-                  <hr class="featurette-divider">
-                  <img class="img-responsive" alt="Frontal folleto evento Language across modes and cultures." title="Frontal folleto evento Language across modes and cultures." src="cartel-y-folletos/3-folleto-seminario-Lenguaje-y-creatividad-16-y-17-de-junio2014-1.jpg">
-                  <hr class="featurette-divider">
-                  <img class="img-responsive" alt="Reverso folleto evento Language across modes and cultures." title="Reverso folleto evento Language across modes and cultures." src="cartel-y-folletos/3-folleto-seminario-Lenguaje-y-creatividad-16-y-17-de-junio2014-2.jpg">
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
-
-  <!-- END-MAIN-CONTENT -->
+  <!-- END-BODY-CONTENT -->
 
   <!-- FOOTER -->
   <footer class="container footer-container">

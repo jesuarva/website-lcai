@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <title>Parse Google Spreadsheet with JavaScript</title>
+  <!-- css -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="http://normalize-css.googlecode.com/svn/trunk/normalize.css"> -->
+  <link rel="stylesheet" href="css/main.css">
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Tabletop.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js"></script>
+<script type="text/javascript">
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1RrsvF7Twfjp83SV-myjBFz6TUsZNM2jnFc/edit?usp=sharing';
+  var tabletop;
+  var investigadores;
+
+  function init() {
+    tabletop = Tabletop.init( { key: publicSpreadsheetUrl,
+                                callback: onSheetsLoad,
+                                simpleSheet: false
+                              }
+                            );
+  }
+
+  function showInfo(data, tabletop) {
+    alert('Successfully processed!')
+    console.log(data);
+  }
+
+  function onSheetsLoad () {
+    investigadores = tabletop.sheets('investigadores').all();
+    console.log(investigadores);
+    var row = 0;
+
+    // render section INVESTIGADORES
+    for (var i = 0; i < investigadores.length; i += 3) {
+      row += 1;
+      $('#investigadores').append('<div  class="row '+row+' row-investigadores">row investigadores</div');
+
+      // investigadoresHTML += '<div  class="row row-investigadores">';
+      var y = 0;
+      var foto;
+      for ( y = 0; y < 3; y++) {
+        console.log(y);
+        $('#investigadores .row'+i).prepend('<div class="" id="miembroi'+[i+y]+'">target:target_element</div>');
+        if (investigadores[i+y].enlace_a_web == "") {
+          foto = "https://picsum.photos/80"+i+y+"/80"+y+i;
+        } else {
+          foto = "info-miembros/"+investigadores[i+y].foto;
+        }
+        $('#investigadores .row'+i).append('<a href="'+investigadores[i+y].enlace_a_web+'">'+
+                                            '\r        <div class="text-center col-lg-4">'+
+                                            '\r          <div class="img-circle-container">'+
+                                            '\r            <img class="img-circle" src="'+foto+'" alt="foto de '+investigadores[i+y].nombre+'" width="140" height="140">'+
+                                            '\r          </div>'+
+                                            '\r          <h3>'+investigadores[i+y].nombre+'</br>'+
+                                            '\r            <span class="text-muted español">Investigador</span>'+
+                                            '\r            <span class="text-muted ingles noVisible">Researcher</span>'+
+                                            '\r          </h3>'+
+                                            '\r          <p class="español">'+investigadores[i+y].universidad_español+'</p>'+
+                                            '\r          <p class="ingles noVisible">'+investigadores[i+y].universidad_ingles+'</p>'+
+                                            '\r        </div><!-- /.col-lg-4 -->'+
+                                            '\r      </a>'
+                                          );
+
+
+      }
+    }
+
+  }
+
+
+  window.addEventListener('DOMContentLoaded', init)
+</script>
+
+<style type="text/css">
+  table {border-collapse: collapse; width: 100%;}
+  th, td {border: thin solid black; padding: 3px;}
+  tr.head th, tr.head td {background-color: #EDEDED; border-bottom: 4px double black;}
+  span.linetitle {font-weight: bold;}
+  div.lineclass {font-style: italic;}
+  .title, .result {width: 80%;}
+  .notes {width: 15%;}
+  h1 {text-align: center;}
+  body {margin: 12px; font-size: 12px;}
+</style>
+<style type="text/css" media="print">
+  form {display: none;}
+</style>
+</head>
+<body>
+  <h1>Parse Google Spreadsheet with JavaScript</h1>
+
+
+
+  <section id="directora" class="row featurette row-directora">
+    <a href="">
+      <div id="miembro1" class="col-md-5">
+        <img class="featurette-image img-responsive center-block" src="https://picsum.photos/800/800" alt="Generic placeholder image">
+      </div>
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Laura Hidalgo Downing.
+          <span class="text-muted español">Coordinadora</span>
+          <span class="text-muted ingles noVisible">Coordinator</span>
+        </h2>
+        <p cl
+        <p class="lead español">Departamento de Filología Inglesa, Universidad Autónoma de Madrid.</p>
+        <p class="lead ingles noVisible">Department of English Philology, Autonomous University of Madrid.</p>
+      </div>
+    </a>
+  </section>
+
+  <hr class="featurette-divider">
+
+  <section id="investigadores">
+  </section>
+
+  <hr class="featurette-divider">
+
+  <section id="doctorando">
+  </section>
+
+  <hr class="featurette-divider">
+
+  <section id="phd-thesis">
+  </section>
+
+  <hr class="featurette-divider">
+
+  <section id="colaboradores">
+  </section>
+
+
+</body>
+
+<style amp-boilerplate>
+  body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+</style>
+<noscript><style amp-boilerplate>
+body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+  </head>
+
+</html>

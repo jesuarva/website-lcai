@@ -4,5 +4,10 @@ for:
   http://languagecreativityandidentity.digital-speck.com/
   https://languagecreativityandidentity.com/
 
-Find and Replace Text Across Multiple Files (INSEDE THE FILES CONTENT) with One Command
-perl -pi -w -e 's/"http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/"/"http://languagecreativityandidentity.digital-speck.com/"/g;' *.html
+DYNAMIC WEB:
+Replace
+http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/
+for:
+http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-
+for:
+http://lab.digital-speck.com/
