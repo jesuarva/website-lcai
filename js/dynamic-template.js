@@ -27,6 +27,8 @@ function onSheetsLoad () {
 	renderDoctorandos();
 	renderPHD();
 	renderColaboradores();
+	renderHome();
+	renderProyectos();
 	renderEventos();
 
 }
@@ -38,7 +40,7 @@ function renderDirectora () {
 	var yControl = 0;
 	var iterations = 0;
 
-	// render section COLABORADORES
+	// render section DIRECTORA
 	for (var i = 0; i < len; i += 3) {
 		yControl++;
 		var rowDynamic = 'row';
@@ -46,8 +48,7 @@ function renderDirectora () {
 		rowDynamic = rowDynamic + rowDynamicCountDirectora;
 		$('#directora').append('<div class="row '+rowDynamic+' featurette row-directora">');
 
-
-    // Fill out COLABORADORES HTML
+    // Fill out DIRECTORA HTML
 		var y = 0;
 		var foto;
 		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
@@ -74,14 +75,12 @@ function renderDirectora () {
 				'\r       <span class="text-muted español">'+directora[i+y].title_es+'</span>'+
 				'\r       <span class="text-muted ingles noVisible">'+directora[i+y].title_en+'</span>'+
 				'\r     </h2>'+
-				'\r     <p class="lead español">Departamento de Filología Inglesa, Universidad Autónoma de Madrid.</p>'+
-				'\r     <p class="lead ingles noVisible">Department of English Philology, Autonomous University of Madrid.</p>'+
-				'\r     <p>'+directora[i+y].email+'</p>'+
+				'\r     <p class="lead español">'+directora[i+y].departamento_es+'</p>'+
+				'\r     <p class="lead ingles noVisible">'+directora[i+y].departamento_en+'</p>'+
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+
 
 
 		}
@@ -319,6 +318,70 @@ function renderColaboradores () {
 			);
 			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
 			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+
+		}
+	}
+
+}
+function renderhome () {
+  home = tabletop.sheets('home').all();
+	console.log('home :'+home);
+  $('#español').append(
+    '<p class="col-md-12">'+
+      home[0].texto_es+
+    '</p>'
+  );
+  $('#ingles').append(
+    '<p class="col-md-12">'+
+      home[0].texto_en+
+    '</p>'
+  );
+}
+function renderProyectos () {
+	proyectos = tabletop.sheets('proyectos').all();
+	console.log('proyectos :'+proyectos);
+	var len = proyectos.length;
+	var rowDynamicCountproyectos = 0;
+	var yControl = 0;
+	var iterations = 0;
+
+	// render section proyectos
+	for (var i = 0; i < len; i += 3) {
+		yControl++;
+		var rowDynamic = 'row';
+		rowDynamicCountproyectos++;
+		rowDynamic = rowDynamic + rowDynamicCountproyectos;
+		$('#proyectos').append('<div class="row '+rowDynamic+' proyectos-row">');
+
+    // Fill out proyectos HTML
+		var y = 0;
+		var foto;
+		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
+		if (yControl <= Math.floor(len / 3)) {
+			iterations = 3;
+		} else {
+			iterations = len % 3;
+		}
+		for ( y = 0; y < iterations; y++) {
+			console.log(y);
+			$('#proyectos .'+rowDynamic).prepend('<div class="" id="proyecto'+[i+y+1]+'"></div>');
+			if (proyectos[i+y].foto === "") {
+				foto = "https://picsum.photos/7"+i+y+"/7"+y+i;
+			} else {
+				foto = "img/"+proyectos[i+y].foto;
+			}
+			$('#proyectos .'+rowDynamic).append(
+        '\r   <div class="col-md-4">'+
+        '\r     <img class="img-proyecto" src="'+foto+'" alt="imágen Proyecto'+proyectos[i+y].proyecto_es+'">'+
+        '\r     <div class="proyecto-descripcion español">'+
+        '\r       <h3>'+proyectos[i+y].proyecto_es+'</h3>'+
+        '\r     </div>'+
+        '\r     <div class="proyecto-descripcion ingles noVisible">'+
+        '\r       <h3>'+proyectos[i+y].proyecto_en+'</h3>'+
+        '\r     </div>'+
+        '\r   </div>'
+			);
+
 
 		}
 	}

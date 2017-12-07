@@ -19,6 +19,12 @@ function showInfo(data, tabletop) {
 
 function onSheetsLoad () {
 	renderDirectora();
+  // Render contact form from google-forms
+	$('#formulario-contacto').append(
+		'<iframe class="español" src="https://docs.google.com/forms/d/e/1FAIpQLSeilwcQsP-zn2ICi2-rY1rfQG7_Kp9YcPv9Adt_GFaQ88yIyA/viewform?embedded=true#start=embed" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'+
+		'<iframe class="ingles noVisible" src="https://docs.google.com/forms/d/e/1FAIpQLSfSK1h4VOOuoORDf-ut0FmI9Gq5xUjZlhutNnizI_HsJtsu3Q/viewform?embedded=true" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'
+	);
+
 }
 function renderDirectora () {
 	directora = tabletop.sheets('directora').all();
@@ -28,16 +34,15 @@ function renderDirectora () {
 	var yControl = 0;
 	var iterations = 0;
 
-	// render section COLABORADORES
+	// render section DIRECTORA
 	for (var i = 0; i < len; i += 3) {
 		yControl++;
 		var rowDynamic = 'row';
 		rowDynamicCountDirectora++;
 		rowDynamic = rowDynamic + rowDynamicCountDirectora;
 		$('#directora').append('<div class="row '+rowDynamic+' featurette row-directora">');
-		$('#formulario-contacto').append('<div class="'+rowDynamic+'">');
 
-    // Fill out COLABORADORES HTML
+    // Fill out DIRECTORA HTML
 		var y = 0;
 		var foto;
 		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
@@ -64,16 +69,12 @@ function renderDirectora () {
 				'\r       <span class="text-muted español">'+directora[i+y].title_es+'</span>'+
 				'\r       <span class="text-muted ingles noVisible">'+directora[i+y].title_en+'</span>'+
 				'\r     </h2>'+
-				'\r     <p class="lead español">Departamento de Filología Inglesa, Universidad Autónoma de Madrid.</p>'+
-				'\r     <p class="lead ingles noVisible">Department of English Philology, Autonomous University of Madrid.</p>'+
-				'\r     <p>'+directora[i+y].email+'</p>'+
+				'\r     <p class="lead español">'+directora[i+y].departamento_es+'</p>'+
+				'\r     <p class="lead ingles noVisible">'+directora[i+y].departamento_en+'</p>'+
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('#formulario-contacto .'+rowDynamic).append(
-        '<iframe class="español" src="https://docs.google.com/forms/d/e/1FAIpQLSeilwcQsP-zn2ICi2-rY1rfQG7_Kp9YcPv9Adt_GFaQ88yIyA/viewform?embedded=true#start=embed" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'+
-        '<iframe class="ingles noVisible" src="https://docs.google.com/forms/d/e/1FAIpQLSfSK1h4VOOuoORDf-ut0FmI9Gq5xUjZlhutNnizI_HsJtsu3Q/viewform?embedded=true" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'
-			);
+
 
 
 		}
