@@ -80,6 +80,8 @@ function renderDirectora () {
 				'\r   </div>'+
 				'\r </a>'
 			);
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
 
@@ -431,7 +433,7 @@ function renderEventos () {
         '\r       <p>Click para ver cartel y folleto</p>'+
         '\r     </div>'+
         '\r     <div class="proyecto-descripcion ingles noVisible">'+
-        '\r       <h3>'+eventos[i+y].eventos_en+'</h3>'+
+        '\r       <h3>'+eventos[i+y].evento_en+'</h3>'+
         '\r       <p>Click to see poster and brochure</p>'+
         '\r     </div>'+
         '\r   </div>'+

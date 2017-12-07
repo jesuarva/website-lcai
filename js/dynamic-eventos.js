@@ -38,7 +38,7 @@ function renderDirectora () {
 	var yControl = 0;
 	var iterations = 0;
 
-	// render section COLABORADORES
+	// render section DIRECTORA
 	for (var i = 0; i < len; i += 3) {
 		yControl++;
 		var rowDynamic = 'row';
@@ -46,8 +46,7 @@ function renderDirectora () {
 		rowDynamic = rowDynamic + rowDynamicCountDirectora;
 		$('#directora').append('<div class="row '+rowDynamic+' featurette row-directora">');
 
-
-    // Fill out COLABORADORES HTML
+    // Fill out DIRECTORA HTML
 		var y = 0;
 		var foto;
 		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
@@ -74,9 +73,8 @@ function renderDirectora () {
 				'\r       <span class="text-muted español">'+directora[i+y].title_es+'</span>'+
 				'\r       <span class="text-muted ingles noVisible">'+directora[i+y].title_en+'</span>'+
 				'\r     </h2>'+
-				'\r     <p class="lead español">Departamento de Filología Inglesa, Universidad Autónoma de Madrid.</p>'+
-				'\r     <p class="lead ingles noVisible">Department of English Philology, Autonomous University of Madrid.</p>'+
-				'\r     <p>'+directora[i+y].email+'</p>'+
+				'\r     <p class="lead español">'+directora[i+y].departamento_es+'</p>'+
+				'\r     <p class="lead ingles noVisible">'+directora[i+y].departamento_en+'</p>'+
 				'\r   </div>'+
 				'\r </a>'
 			);
@@ -84,10 +82,12 @@ function renderDirectora () {
 			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
+
 		}
 	}
 
 }
+
 function renderInvestigadores () {
 	investigadores = tabletop.sheets('investigadores').all();
 	console.log('investigadores :'+investigadores);
@@ -368,7 +368,7 @@ function renderEventos () {
         '\r       <p>Click para ver cartel y folleto</p>'+
         '\r     </div>'+
         '\r     <div class="proyecto-descripcion ingles noVisible">'+
-        '\r       <h3>'+eventos[i+y].eventos_en+'</h3>'+
+        '\r       <h3>'+eventos[i+y].evento_en+'</h3>'+
         '\r       <p>Click to see poster and brochure</p>'+
         '\r     </div>'+
         '\r   </div>'+
