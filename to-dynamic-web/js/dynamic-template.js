@@ -1,10 +1,14 @@
-console.log("hola, desde dynamic-contacto.js");
+console.log("hola, desde dynamic-miembros.js");
 
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1RrsvF7Twfjp83SV-myjBFz6TUsZNM2jnFc/edit?usp=sharing';
 var tabletop;
+var investigadores;
+var doctorandos;
+var phd_thesis;
+var colaboradores;
 var directora;
 
-function init() {
+function initMiembros() {
 	tabletop = Tabletop.init( { key: publicSpreadsheetUrl,
 															callback: onSheetsLoad,
 															simpleSheet: false
@@ -23,12 +27,9 @@ function onSheetsLoad () {
 	renderDoctorandos();
 	renderPHD();
 	renderColaboradores();
-
-  // Render contact form from google-forms
-	$('#formulario-contacto').append(
-		'<iframe class="español" src="https://docs.google.com/forms/d/e/1FAIpQLSeilwcQsP-zn2ICi2-rY1rfQG7_Kp9YcPv9Adt_GFaQ88yIyA/viewform?embedded=true#start=embed" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'+
-		'<iframe class="ingles noVisible" src="https://docs.google.com/forms/d/e/1FAIpQLSfSK1h4VOOuoORDf-ut0FmI9Gq5xUjZlhutNnizI_HsJtsu3Q/viewform?embedded=true" width="100%" height="1300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>'
-	);
+	renderHome();
+	renderProyectos();
+	renderEventos();
 
 }
 function renderDirectora () {
@@ -324,6 +325,146 @@ function renderColaboradores () {
 	}
 
 }
+function renderhome () {
+  home = tabletop.sheets('home').all();
+	console.log('home :'+home);
+  $('#español').append(
+    '<p class="col-md-12">'+
+      home[0].texto_es+
+    '</p>'
+  );
+  $('#ingles').append(
+    '<p class="col-md-12">'+
+      home[0].texto_en+
+    '</p>'
+  );
+}
+function renderProyectos () {
+	proyectos = tabletop.sheets('proyectos').all();
+	console.log('proyectos :'+proyectos);
+	var len = proyectos.length;
+	var rowDynamicCountproyectos = 0;
+	var yControl = 0;
+	var iterations = 0;
+
+	// render section proyectos
+	for (var i = 0; i < len; i += 3) {
+		yControl++;
+		var rowDynamic = 'row';
+		rowDynamicCountproyectos++;
+		rowDynamic = rowDynamic + rowDynamicCountproyectos;
+		$('#proyectos').append('<div class="row '+rowDynamic+' proyectos-row">');
+
+    // Fill out proyectos HTML
+		var y = 0;
+		var foto;
+		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
+		if (yControl <= Math.floor(len / 3)) {
+			iterations = 3;
+		} else {
+			iterations = len % 3;
+		}
+		for ( y = 0; y < iterations; y++) {
+			console.log(y);
+			$('#proyectos .'+rowDynamic).prepend('<div class="" id="proyecto'+[i+y+1]+'"></div>');
+			if (proyectos[i+y].foto === "") {
+				foto = "https://picsum.photos/7"+i+y+"/7"+y+i;
+			} else {
+				foto = "img/"+proyectos[i+y].foto;
+			}
+			$('#proyectos .'+rowDynamic).append(
+        '\r   <div class="col-md-4">'+
+        '\r     <img class="img-proyecto" src="'+foto+'" alt="imágen Proyecto'+proyectos[i+y].proyecto_es+'">'+
+        '\r     <div class="proyecto-descripcion español">'+
+        '\r       <h3>'+proyectos[i+y].proyecto_es+'</h3>'+
+        '\r     </div>'+
+        '\r     <div class="proyecto-descripcion ingles noVisible">'+
+        '\r       <h3>'+proyectos[i+y].proyecto_en+'</h3>'+
+        '\r     </div>'+
+        '\r   </div>'
+			);
 
 
-window.addEventListener('DOMContentLoaded', init);
+		}
+	}
+
+}
+function renderEventos () {
+	eventos = tabletop.sheets('eventos').all();
+	console.log('eventos :'+eventos);
+	var len = eventos.length;
+	var rowDynamicCounteventos = 0;
+	var yControl = 0;
+	var iterations = 0;
+
+	// render section eventos
+	for (var i = 0; i < len; i += 3) {
+		yControl++;
+		var rowDynamic = 'row';
+		rowDynamicCounteventos++;
+		rowDynamic = rowDynamic + rowDynamicCounteventos;
+		$('#eventos').append('<div class="row '+rowDynamic+' proyectos-row">');
+		$('#modal').append('<div class="'+rowDynamic+'">');
+
+    // Fill out eventos HTML
+		var y = 0;
+		var foto;
+		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
+		if (yControl <= Math.floor(len / 3)) {
+			iterations = 3;
+		} else {
+			iterations = len % 3;
+		}
+		for ( y = 0; y < iterations; y++) {
+			console.log(y);
+			$('#eventos .'+rowDynamic).prepend('<div class="" id="evento'+[i+y+1]+'"></div>');
+			if (eventos[i+y].foto === "") {
+				foto = "https://picsum.photos/10"+i+y+"/10"+y+i;
+			} else {
+				foto = "cartel-y-folletos/"+eventos[i+y].foto;
+			}
+			$('#eventos .'+rowDynamic).append(
+        '\r <div class="col-md-6">'+
+        '\r   <div href="#Modal-'+[i+y+1]+'" class="modal-trigger" data-toggle="modal">'+
+        '\r     <!-- width 480 , heigth 245 -->'+
+        '\r     <img class="img-proyecto" src="'+foto+'" alt="Imágen del evento'+[i+y+1]+'">'+
+        '\r     <div class="proyecto-descripcion español">'+
+        '\r       <h3>'+eventos[i+y].evento_es+'</h3>'+
+        '\r       <p>Click para ver cartel y folleto</p>'+
+        '\r     </div>'+
+        '\r     <div class="proyecto-descripcion ingles noVisible">'+
+        '\r       <h3>'+eventos[i+y].evento_en+'</h3>'+
+        '\r       <p>Click to see poster and brochure</p>'+
+        '\r     </div>'+
+        '\r   </div>'+
+        '\r </div>'
+			);
+			$('#modal .'+rowDynamic).append(
+        '\r <!-- Modal HTML -->'+
+        '\r <div id="Modal-'+[i+y+1]+'" class="modal fade">'+
+        '\r     <div class="modal-dialog">'+
+        '\r         <div class="modal-content">'+
+        '\r             <div class="modal-header">'+
+        '\r                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+        '\r                 <h2 class="text-center modal-title">'+eventos[i+y].evento_es+'</h2>'+
+        '\r             </div>'+
+        '\r             <div class="modal-body">'+
+        '\r                 <img class="img-responsive" alt="Cartel evento '+eventos[i+y].evento_es+'" title="Cartel evento '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].cartel+'">'+
+        '\r                 <hr class="featurette-divider">'+
+        '\r                 <img class="img-responsive" alt="Frontal del folleto para '+eventos[i+y].evento_es+'" title="Frontal del folleto para '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].folleto_frontal+'">'+
+        '\r                 <hr class="featurette-divider">'+
+        '\r                 <img class="img-responsive" alt="Reverso del folleto para '+eventos[i+y].evento_es+'" title="Reverso del folleto para '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].folleto_reverso+'">'+
+        '\r             </div>'+
+        '\r             <div class="modal-footer">'+
+        '\r                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>'+
+        '\r             </div>'+
+        '\r         </div>'+
+        '\r     </div>'+
+        '\r </div>'
+			);
+		}
+	}
+
+}
+
+window.addEventListener('DOMContentLoaded', initMiembros);
