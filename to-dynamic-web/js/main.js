@@ -45,7 +45,7 @@ $(function () {
 		console.log('true');
 		$('.español').toggleClass('noVisible');
 		$('.ingles').toggleClass('noVisible');
-		$('#idioma-cambia').attr('idioma', 'en');
+		$('.idioma-cambia').attr('idioma', 'en');
 		$('.seccion').each(function(index){
 			var hrefOriginal = $(this).attr('href');
 			$(this).attr('href', hrefOriginal+'?idioma=en')
@@ -56,7 +56,7 @@ $(function () {
 			$(this).attr('href', hrefOriginal+'?idioma=en')
 			console.log(this);
 		});
-  };
+  }
 
 
 	// DROPDOWN HOVER
