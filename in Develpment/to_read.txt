@@ -1,14 +1,16 @@
 Replace:
   http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/
+  http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-
 for:
   http://languagecreativityandidentity.digital-speck.com/
-  https://languagecreativityandidentity.com/
+  https://languagecreativityandidentity.com/-dynamic
 
 DYNAMIC WEB:
 Replace
 http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/
 for:
 http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-
+http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-
 for:
 http://lab.digital-speck.com/
 

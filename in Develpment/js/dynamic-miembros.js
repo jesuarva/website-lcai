@@ -7,6 +7,8 @@ var doctorandos;
 var phd_thesis;
 var colaboradores;
 var directora;
+var foto;
+var fotoControl;
 
 function initMiembros() {
 	tabletop = Tabletop.init( { key: publicSpreadsheetUrl,
@@ -77,8 +79,8 @@ function renderDirectora () {
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
 
@@ -105,7 +107,7 @@ function renderInvestigadores () {
 
 		// Fill out Investigadores HTML
 		var y = 0;
-		var foto;
+
 		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
 		if (yControl <= Math.floor(len / 3)) {
 			iterations = 3;
@@ -118,7 +120,14 @@ function renderInvestigadores () {
 			if (investigadores[i+y].foto === "") {
 				foto = "https://picsum.photos/8"+i+y+"/8"+y+i;
 			} else {
-				foto = "info-miembros/"+investigadores[i+y].foto;
+				foto = +investigadores[i+y].foto;
+				console.log(foto);
+				// foto = foto.toString();
+				// console.log(foto);
+				// fotoControl = foto.indexOf(".dropbox");
+				// console.log(fotoControl);
+				// foto = "https://dl"+foto.slice(fotoControl);
+				// console.log(foto);
 			}
 			$('#investigadores .'+rowDynamic).append('<a href="'+investigadores[i+y].enlace_a_web+'">'+
 				'\r        <div class="text-center col-lg-4">'+
@@ -126,8 +135,6 @@ function renderInvestigadores () {
 				'\r            <img class="img-circle" src="'+foto+'" alt="foto de '+investigadores[i+y].nombre+'" width="140" height="140">'+
 				'\r          </div>'+
 				'\r          <h3>'+investigadores[i+y].nombre+'</br>'+
-				'\r            <span class="text-muted español">Investigador</span>'+
-				'\r            <span class="text-muted ingles noVisible">Researcher</span>'+
 				'\r          </h3>'+
 				'\r          <p class="español">'+investigadores[i+y].universidad_es+'</p>'+
 				'\r          <p class="ingles noVisible">'+investigadores[i+y].universidad_en+'</p>'+
@@ -135,8 +142,8 @@ function renderInvestigadores () {
 				'\r        </div><!-- /.col-lg-4 -->'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
 
 
 
@@ -182,21 +189,16 @@ function renderDoctorandos () {
 			$('#doctorandos .'+rowDynamic).append(
 	    '\r    <a href="'+doctorandos[i+y].enlace_a_web+'">'+
 	    '\r      <div class="col-md-4">'+
-	    '\r        <div class="text-center proyecto-descripcion">'+
+	    '\r        <img class="img-members center-block" src="'+foto+'" alt="foto de '+doctorandos[i+y].nombre+'">'+
+			'\r        <div class="text-center proyecto-descripcion">'+
 	    '\r          <h3>'+doctorandos[i+y].nombre+'</br>'+
-	    '\r            <span class="text-muted español">Doctorando</span>'+
-	    '\r            <span class="text-muted ingles noVisible">Doctoral</span>'+
 	    '\r          </h3>'+
-	    '\r        </div>'+
-	    '\r        <img class="img-members" src="'+foto+'" alt="foto de '+doctorandos[i+y].nombre+'">'+
-	    '\r        <div class="text-center proyecto-descripcion">'+
-	    '\r          <p>'+doctorandos[i+y].email+'</p>'+
 	    '\r        </div>'+
 	    '\r      </div>'+
 	    '\r    </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
 
 
 		}
@@ -241,22 +243,16 @@ function renderPHD () {
 			$('#phd-thesis .'+rowDynamic).append(
 				'\r      <a href="'+phd_thesis[i+y].enlace_a_web+'">'+
 				'\r        <div id="" class="col-md-4">'+
+				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
 				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <h3>'+phd_thesis[i+y].nombre+'</br>'+
-				'\r              <span class="text-muted español">PhD. Tesis</span>'+
-				'\r              <span class="text-muted ingles noVisible">PhD. Theses</span>'+
 				'\r            </h3>'+
-				'\r          </div>'+
-				'\r          <img class="img-members" src="'+foto+'" alt="">'+
-				'\r          <div class="text-center proyecto-descripcion">'+
-				'\r            <p class="español"><br>'+phd_thesis[i+y].descrip_es+'</p>'+
-				'\r            <p class="ingles noVisible"><br>'+phd_thesis[i+y].descrip_en+'</p>'+
 				'\r          </div>'+
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
 
 
 		}
@@ -301,22 +297,18 @@ function renderColaboradores () {
 			$('#colaboradores .'+rowDynamic).append(
 				'\r      <a href="'+colaboradores[i+y].enlace_a_web+'">'+
 				'\r        <div id="" class="col-md-4">'+
-				'\r          <div class="text-center proyecto-descripcion">'+
+				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
+ 				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <h3>'+colaboradores[i+y].nombre+'</br>'+
-				'\r              <span class="text-muted español">Colaboradora</span>'+
-				'\r              <span class="text-muted ingles noVisible">Collaborator</span>'+
 				'\r            </h3>'+
-				'\r          </div>'+
-				'\r          <img class="img-members" src="'+foto+'" alt="">'+
-				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <p class="español">'+colaboradores[i+y].titulo_es+'</p>'+
 				'\r            <p class="ingles noVisible">'+colaboradores[i+y].titulo_en+'</p>'+
 				'\r          </div>'+
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
 
 		}
 	}

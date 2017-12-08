@@ -365,7 +365,6 @@ function renderEventos () {
         '\r     <img class="img-proyecto" src="'+foto+'" alt="Imágen del evento'+[i+y+1]+'">'+
         '\r     <div class="proyecto-descripcion español">'+
         '\r       <h3>'+eventos[i+y].evento_es+'</h3>'+
-        '\r       <p>Click para ver cartel y folleto</p>'+
         '\r     </div>'+
         '\r     <div class="proyecto-descripcion ingles noVisible">'+
         '\r       <h3>'+eventos[i+y].evento_en+'</h3>'+
@@ -381,7 +380,6 @@ function renderEventos () {
         '\r         <div class="modal-content">'+
         '\r             <div class="modal-header">'+
         '\r                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-        '\r                 <h2 class="text-center modal-title">'+eventos[i+y].evento_es+'</h2>'+
         '\r             </div>'+
         '\r             <div class="modal-body">'+
         '\r                 <img class="img-responsive" alt="Cartel evento '+eventos[i+y].evento_es+'" title="Cartel evento '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].cartel+'">'+
