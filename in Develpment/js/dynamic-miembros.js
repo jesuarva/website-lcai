@@ -1,4 +1,4 @@
-console.log("hola, desde dynamic-miembros.js");
+ console.log("hola, desde dynamic-miembros.js");
 
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1RrsvF7Twfjp83SV-myjBFz6TUsZNM2jnFc/edit?usp=sharing';
 var tabletop;
@@ -316,3 +316,48 @@ function renderColaboradores () {
 }
 
 window.addEventListener('DOMContentLoaded', initMiembros);
+
+/* LOCAL STORAGE */
+// Function from MDN : https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+// Function that detects whether localStorage is both supported and available:
+function storageAvailable(type) {
+		var storage = window[type],
+				x = '__storage_test__';
+		try {
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+}
+/* CHECK FOR sessionStorage */
+if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+	console.log('Yippee! We can use localStorage awesomeness');
+}
+else {
+  // Too bad, no localStorage for us
+	console.log('Too bad, no localStorage for us');
+}
+/* CHECK FOR sessionStorage */
+if (storageAvailable('sessionStorage')) {
+  // Yippee! We can use localStorage awesomeness
+	console.log('Yippee! We can use sessionStorage awesomeness');
+}
+else {
+  // Too bad, no localStorage for us
+	console.log('Too bad, no sessionStorage for us');
+}
