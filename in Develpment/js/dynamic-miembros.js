@@ -10,7 +10,6 @@ var directora;
 var foto;
 var fotoControl;
 
-/* LOAD INFO FROM GOOGLE DIRVE's spreadsheet */
 function initMiembros() {
 	tabletop = Tabletop.init( { key: publicSpreadsheetUrl,
 															callback: onSheetsLoad,
@@ -18,65 +17,22 @@ function initMiembros() {
 														}
 													);
 }
-// function showInfo(data, tabletop) {
-// 	alert('Successfully processed!')
-// 	console.log(data);
-// }
 
-/* RENDER CONTENT */
+function showInfo(data, tabletop) {
+	alert('Successfully processed!')
+	console.log(data);
+}
+
 function onSheetsLoad () {
-  console.log('Hi from onsheetLoad()');
-  assignVariablesValuesFromSheet();
-  renderContent();
-
-}
-function onSessionStorageLoad () {
-  console.log('Hi from onSessionStorageLoad()');
-  assignVariablesValuesFromSessionStorage();
-  renderContent();
-
-}
-
-/* DEALING WITH DATA */
-function assignVariablesValuesFromSheet () {
-  console.log('Hi from assignVariablesValuesFromSheet()');
-  home = tabletop.sheets('home').all();
-	sessionStorage.setItem('home', JSON.stringify(home));
-  proyectos = tabletop.sheets('proyectos').all();
-	sessionStorage.setItem('proyectos', JSON.stringify(proyectos));
-  eventos = tabletop.sheets('eventos').all();
-	sessionStorage.setItem('eventos', JSON.stringify(eventos));
-  directora = tabletop.sheets('directora').all();
-  sessionStorage.setItem('directora', JSON.stringify(directora));
-  investigadores = tabletop.sheets('investigadores').all();
-  sessionStorage.setItem('investigadores', JSON.stringify(investigadores));
-  doctorandos = tabletop.sheets('doctorandos').all();
-  sessionStorage.setItem('doctorandos', JSON.stringify(doctorandos));
-  phd_thesis = tabletop.sheets('phd-thesis').all();
-  sessionStorage.setItem('phd_thesis', JSON.stringify(phd_thesis));
-  colaboradores = tabletop.sheets('colaboradores').all();
-  sessionStorage.setItem('colaboradores', JSON.stringify(colaboradores));
-}
-function assignVariablesValuesFromSessionStorage () {
-  console.log('Hi form assignVariablesValuesFromSessionStorage');
-  directora = JSON.parse(sessionStorage.getItem('directora'));
-  investigadores = JSON.parse(sessionStorage.getItem('investigadores'));
-  doctorandos = JSON.parse(sessionStorage.getItem('doctorandos'));
-  phd_thesis = JSON.parse(sessionStorage.getItem('phd_thesis'));
-  colaboradores = JSON.parse(sessionStorage.getItem('colaboradores'));
-}
-function renderContent () {
-  console.log('Hi from renderContent()');
-  renderDirectora();
+	renderDirectora();
 	renderInvestigadores();
 	renderDoctorandos();
 	renderPHD();
 	renderColaboradores();
+
 }
-
-/* BUILD DOM STRUCTURE */
 function renderDirectora () {
-
+	directora = tabletop.sheets('directora').all();
 	console.log('directora :'+directora);
 	var len = directora.length;
 	var rowDynamicCountDirectora = 0;
@@ -123,8 +79,8 @@ function renderDirectora () {
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
 
@@ -133,7 +89,7 @@ function renderDirectora () {
 
 }
 function renderInvestigadores () {
-
+	investigadores = tabletop.sheets('investigadores').all();
 	console.log('investigadores :'+investigadores);
 	var len = investigadores.length
 	var rowDynamicCountInvestigadores = 0;
@@ -186,8 +142,8 @@ function renderInvestigadores () {
 				'\r        </div><!-- /.col-lg-4 -->'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
 
 
 
@@ -196,7 +152,7 @@ function renderInvestigadores () {
 
 }
 function renderDoctorandos () {
-
+	doctorandos = tabletop.sheets('doctorandos').all();
 	console.log('doctorandos :'+doctorandos);
 	var len = doctorandos.length;
 	var rowDynamicCountDoctorandos = 0;
@@ -241,8 +197,8 @@ function renderDoctorandos () {
 	    '\r      </div>'+
 	    '\r    </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
 
 
 		}
@@ -250,7 +206,7 @@ function renderDoctorandos () {
 
 }
 function renderPHD () {
-
+	phd_thesis = tabletop.sheets('phd-thesis').all();
 	console.log('phd :'+phd_thesis);
 	var len = phd_thesis.length;
 	var rowDynamicCountPhd = 0;
@@ -295,8 +251,8 @@ function renderPHD () {
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
 
 
 		}
@@ -304,7 +260,7 @@ function renderPHD () {
 
 }
 function renderColaboradores () {
-
+	colaboradores = tabletop.sheets('colaboradores').all();
 	console.log('colaboradores :'+colaboradores);
 	var len = colaboradores.length;
 	var rowDynamicCountColaboradores = 0;
@@ -351,13 +307,15 @@ function renderColaboradores () {
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in-Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
 
 		}
 	}
 
 }
+
+window.addEventListener('DOMContentLoaded', initMiembros);
 
 /* LOCAL STORAGE */
 // Function from MDN : https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
@@ -398,18 +356,8 @@ else {
 if (storageAvailable('sessionStorage')) {
   // Yippee! We can use localStorage awesomeness
 	console.log('Yippee! We can use sessionStorage awesomeness');
-  // Testing whether your storage has been populated
-  if(sessionStorage.getItem('directora')) {
-    console.log('there are data on sessionStorage');
-    window.addEventListener('DOMContentLoaded', onSessionStorageLoad);
-
-  } else {
-    console.log('there are NO data on sessionStorage');
-    window.addEventListener('DOMContentLoaded', initMiembros);
-  }
 }
 else {
   // Too bad, no localStorage for us
 	console.log('Too bad, no sessionStorage for us');
-  window.addEventListener('DOMContentLoaded', initMiembros);
 }
