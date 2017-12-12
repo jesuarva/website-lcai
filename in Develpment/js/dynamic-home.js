@@ -1,4 +1,4 @@
-console.log("hola, desde dynamic-miembros.js");
+console.log("hola, desde dynamic-home.js");
 
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1RrsvF7Twfjp83SV-myjBFz6TUsZNM2jnFc/edit?usp=sharing';
 var tabletop;
@@ -7,7 +7,10 @@ var doctorandos;
 var phd_thesis;
 var colaboradores;
 var directora;
+var home;
 
+
+/* LOAD INFO FROM GOOGLE DIRVE's spreadsheet */
 function initMiembros() {
 	tabletop = Tabletop.init( { key: publicSpreadsheetUrl,
 															callback: onSheetsLoad,
@@ -15,23 +18,67 @@ function initMiembros() {
 														}
 													);
 }
+// function showInfo(data, tabletop) {
+// 	alert('Successfully processed!')
+// 	console.log(data);
+// }
 
-function showInfo(data, tabletop) {
-	alert('Successfully processed!')
-	console.log(data);
+/* RENDER CONTENT */
+function onSheetsLoad () {
+  console.log('Hi from onsheetLoad()');
+  assignVariablesValuesFromSheet();
+  renderContent();
+
+}
+function onSessionStorageLoad () {
+  console.log('Hi from onSessionStorageLoad()');
+  assignVariablesValuesFromSessionStorage();
+  renderContent();
+
 }
 
-function onSheetsLoad () {
+/* DEALING WITH DATA */
+function assignVariablesValuesFromSheet () {
+  console.log('Hi from assignVariablesValuesFromSheet()');
+  home = tabletop.sheets('home').all();
+	sessionStorage.setItem('home', JSON.stringify(home));
+  proyectos = tabletop.sheets('proyectos').all();
+	sessionStorage.setItem('proyectos', JSON.stringify(proyectos));
+  eventos = tabletop.sheets('eventos').all();
+	sessionStorage.setItem('eventos', JSON.stringify(eventos));
+  directora = tabletop.sheets('directora').all();
+  sessionStorage.setItem('directora', JSON.stringify(directora));
+  investigadores = tabletop.sheets('investigadores').all();
+  sessionStorage.setItem('investigadores', JSON.stringify(investigadores));
+  doctorandos = tabletop.sheets('doctorandos').all();
+  sessionStorage.setItem('doctorandos', JSON.stringify(doctorandos));
+  phd_thesis = tabletop.sheets('phd-thesis').all();
+  sessionStorage.setItem('phd_thesis', JSON.stringify(phd_thesis));
+  colaboradores = tabletop.sheets('colaboradores').all();
+  sessionStorage.setItem('colaboradores', JSON.stringify(colaboradores));
+}
+function assignVariablesValuesFromSessionStorage () {
+  console.log('Hi form assignVariablesValuesFromSessionStorage');
+	home = JSON.parse(sessionStorage.getItem('home'));
+	directora = JSON.parse(sessionStorage.getItem('directora'));
+  investigadores = JSON.parse(sessionStorage.getItem('investigadores'));
+  doctorandos = JSON.parse(sessionStorage.getItem('doctorandos'));
+  phd_thesis = JSON.parse(sessionStorage.getItem('phd_thesis'));
+  colaboradores = JSON.parse(sessionStorage.getItem('colaboradores'));
+}
+function renderContent () {
+  console.log('Hi from renderContent()');
+	renderHome();
 	renderDirectora();
 	renderInvestigadores();
 	renderDoctorandos();
 	renderPHD();
 	renderColaboradores();
-	renderHome();
-
 }
+
+/* BUILD DOM STRUCTURE */
 function renderDirectora () {
-	directora = tabletop.sheets('directora').all();
+
 	console.log('directora :'+directora);
 	var len = directora.length;
 	var rowDynamicCountDirectora = 0;
@@ -78,8 +125,8 @@ function renderDirectora () {
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
 
@@ -88,7 +135,7 @@ function renderDirectora () {
 
 }
 function renderInvestigadores () {
-	investigadores = tabletop.sheets('investigadores').all();
+
 	console.log('investigadores :'+investigadores);
 	var len = investigadores.length
 	var rowDynamicCountInvestigadores = 0;
@@ -106,7 +153,7 @@ function renderInvestigadores () {
 
 		// Fill out Investigadores HTML
 		var y = 0;
-		var foto;
+
 		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
 		if (yControl <= Math.floor(len / 3)) {
 			iterations = 3;
@@ -119,7 +166,14 @@ function renderInvestigadores () {
 			if (investigadores[i+y].foto === "") {
 				foto = "https://picsum.photos/8"+i+y+"/8"+y+i;
 			} else {
-				foto = "info-miembros/"+investigadores[i+y].foto;
+				foto = +investigadores[i+y].foto;
+				console.log(foto);
+				// foto = foto.toString();
+				// console.log(foto);
+				// fotoControl = foto.indexOf(".dropbox");
+				// console.log(fotoControl);
+				// foto = "https://dl"+foto.slice(fotoControl);
+				// console.log(foto);
 			}
 			$('#investigadores .'+rowDynamic).append('<a href="'+investigadores[i+y].enlace_a_web+'">'+
 				'\r        <div class="text-center col-lg-4">'+
@@ -127,8 +181,6 @@ function renderInvestigadores () {
 				'\r            <img class="img-circle" src="'+foto+'" alt="foto de '+investigadores[i+y].nombre+'" width="140" height="140">'+
 				'\r          </div>'+
 				'\r          <h3>'+investigadores[i+y].nombre+'</br>'+
-				'\r            <span class="text-muted español">Investigador</span>'+
-				'\r            <span class="text-muted ingles noVisible">Researcher</span>'+
 				'\r          </h3>'+
 				'\r          <p class="español">'+investigadores[i+y].universidad_es+'</p>'+
 				'\r          <p class="ingles noVisible">'+investigadores[i+y].universidad_en+'</p>'+
@@ -136,8 +188,8 @@ function renderInvestigadores () {
 				'\r        </div><!-- /.col-lg-4 -->'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
 
 
 
@@ -146,7 +198,7 @@ function renderInvestigadores () {
 
 }
 function renderDoctorandos () {
-	doctorandos = tabletop.sheets('doctorandos').all();
+
 	console.log('doctorandos :'+doctorandos);
 	var len = doctorandos.length;
 	var rowDynamicCountDoctorandos = 0;
@@ -183,21 +235,16 @@ function renderDoctorandos () {
 			$('#doctorandos .'+rowDynamic).append(
 	    '\r    <a href="'+doctorandos[i+y].enlace_a_web+'">'+
 	    '\r      <div class="col-md-4">'+
-	    '\r        <div class="text-center proyecto-descripcion">'+
+	    '\r        <img class="img-members center-block" src="'+foto+'" alt="foto de '+doctorandos[i+y].nombre+'">'+
+			'\r        <div class="text-center proyecto-descripcion">'+
 	    '\r          <h3>'+doctorandos[i+y].nombre+'</br>'+
-	    '\r            <span class="text-muted español">Doctorando</span>'+
-	    '\r            <span class="text-muted ingles noVisible">Doctoral</span>'+
 	    '\r          </h3>'+
-	    '\r        </div>'+
-	    '\r        <img class="img-members" src="'+foto+'" alt="foto de '+doctorandos[i+y].nombre+'">'+
-	    '\r        <div class="text-center proyecto-descripcion">'+
-	    '\r          <p>'+doctorandos[i+y].email+'</p>'+
 	    '\r        </div>'+
 	    '\r      </div>'+
 	    '\r    </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
 
 
 		}
@@ -205,7 +252,7 @@ function renderDoctorandos () {
 
 }
 function renderPHD () {
-	phd_thesis = tabletop.sheets('phd-thesis').all();
+
 	console.log('phd :'+phd_thesis);
 	var len = phd_thesis.length;
 	var rowDynamicCountPhd = 0;
@@ -242,22 +289,16 @@ function renderPHD () {
 			$('#phd-thesis .'+rowDynamic).append(
 				'\r      <a href="'+phd_thesis[i+y].enlace_a_web+'">'+
 				'\r        <div id="" class="col-md-4">'+
+				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
 				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <h3>'+phd_thesis[i+y].nombre+'</br>'+
-				'\r              <span class="text-muted español">PhD. Tesis</span>'+
-				'\r              <span class="text-muted ingles noVisible">PhD. Theses</span>'+
 				'\r            </h3>'+
-				'\r          </div>'+
-				'\r          <img class="img-members" src="'+foto+'" alt="">'+
-				'\r          <div class="text-center proyecto-descripcion">'+
-				'\r            <p class="español"><br>'+phd_thesis[i+y].descrip_es+'</p>'+
-				'\r            <p class="ingles noVisible"><br>'+phd_thesis[i+y].descrip_en+'</p>'+
 				'\r          </div>'+
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
 
 
 		}
@@ -265,7 +306,7 @@ function renderPHD () {
 
 }
 function renderColaboradores () {
-	colaboradores = tabletop.sheets('colaboradores').all();
+
 	console.log('colaboradores :'+colaboradores);
 	var len = colaboradores.length;
 	var rowDynamicCountColaboradores = 0;
@@ -302,29 +343,25 @@ function renderColaboradores () {
 			$('#colaboradores .'+rowDynamic).append(
 				'\r      <a href="'+colaboradores[i+y].enlace_a_web+'">'+
 				'\r        <div id="" class="col-md-4">'+
-				'\r          <div class="text-center proyecto-descripcion">'+
+				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
+ 				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <h3>'+colaboradores[i+y].nombre+'</br>'+
-				'\r              <span class="text-muted español">Colaboradora</span>'+
-				'\r              <span class="text-muted ingles noVisible">Collaborator</span>'+
 				'\r            </h3>'+
-				'\r          </div>'+
-				'\r          <img class="img-members" src="'+foto+'" alt="">'+
-				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <p class="español">'+colaboradores[i+y].titulo_es+'</p>'+
 				'\r            <p class="ingles noVisible">'+colaboradores[i+y].titulo_en+'</p>'+
 				'\r          </div>'+
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
 
 		}
 	}
 
 }
 function renderHome () {
-  home = tabletop.sheets('home').all();
+
 	console.log('home :'+home);
   $('#español').append(
     '<p class="col-md-12">'+
@@ -338,4 +375,57 @@ function renderHome () {
   );
 }
 
-window.addEventListener('DOMContentLoaded', initMiembros);
+/* LOCAL STORAGE */
+// Function from MDN : https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API
+// Function that detects whether localStorage is both supported and available:
+function storageAvailable(type) {
+		var storage = window[type],
+				x = '__storage_test__';
+		try {
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+}
+/* CHECK FOR sessionStorage */
+if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+	console.log('Yippee! We can use localStorage awesomeness');
+}
+else {
+  // Too bad, no localStorage for us
+	console.log('Too bad, no localStorage for us');
+}
+/* CHECK FOR sessionStorage */
+if (storageAvailable('sessionStorage')) {
+  // Yippee! We can use localStorage awesomeness
+	console.log('Yippee! We can use sessionStorage awesomeness');
+  // Testing whether your storage has been populated
+  if(sessionStorage.getItem('home')) {
+    console.log('there are data on sessionStorage');
+    window.addEventListener('DOMContentLoaded', onSessionStorageLoad);
+
+  } else {
+    console.log('there are NO data on sessionStorage');
+    window.addEventListener('DOMContentLoaded', initMiembros);
+  }
+}
+else {
+  // Too bad, no localStorage for us
+	console.log('Too bad, no sessionStorage for us');
+  window.addEventListener('DOMContentLoaded', initMiembros);
+}
