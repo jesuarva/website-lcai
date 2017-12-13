@@ -4,6 +4,7 @@ Replace:
 for:
   http://languagecreativityandidentity.digital-speck.com/
   https://languagecreativityandidentity.com/-dynamic
+  https://languagecreativityandidentity.com/
 
 DYNAMIC WEB:
 Replace

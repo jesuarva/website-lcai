@@ -1,4 +1,4 @@
-console.log("hola, desde main.js");
+console.log("Hi, from main.js");
 
 $(function () {
   // CHANGE LANGUAGE

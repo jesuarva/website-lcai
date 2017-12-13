@@ -28,12 +28,14 @@ function onSheetsLoad () {
   console.log('Hi from onsheetLoad()');
   assignVariablesValuesFromSheet();
   renderContent();
+  addClickEventToMemberSnippet();
 
 }
 function onSessionStorageLoad () {
   console.log('Hi from onSessionStorageLoad()');
   assignVariablesValuesFromSessionStorage();
   renderContent();
+  addClickEventToMemberSnippet();
 
 }
 
@@ -109,7 +111,7 @@ function renderDirectora () {
 				foto = "info-miembros/"+directora[i+y].foto;
 			}
 			$('#directora .'+rowDynamic).append(
-				'\r <a href="'+directora[i+y].enlace_a_web+'">'+
+				'\r <a href="'+directora[i+y].enlace_a_web+'" member-title="directora" member-index="'+[i+y]+'">'+
 				'\r   <div id="miembro1" class="col-md-5">'+
 				'\r     <img class="featurette-image img-responsive center-block" src="'+foto+'" alt="Generic placeholder image">'+
 				'\r   </div>'+
@@ -123,8 +125,8 @@ function renderDirectora () {
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="https://languagecreativityandidentity.com/miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="https://languagecreativityandidentity.com/miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
 
@@ -135,7 +137,7 @@ function renderDirectora () {
 function renderInvestigadores () {
 
 	console.log('investigadores :'+investigadores);
-	var len = investigadores.length
+	var len = investigadores.length;
 	var rowDynamicCountInvestigadores = 0;
 	var yControl = 0;
 	var iterations = 0;
@@ -173,7 +175,7 @@ function renderInvestigadores () {
 				// foto = "https://dl"+foto.slice(fotoControl);
 				// console.log(foto);
 			}
-			$('#investigadores .'+rowDynamic).append('<a href="'+investigadores[i+y].enlace_a_web+'">'+
+			$('#investigadores .'+rowDynamic).append('<a href="'+investigadores[i+y].enlace_a_web+'" member-title="investigadores" member-index="'+[i+y]+'">'+
 				'\r        <div class="text-center col-lg-4">'+
 				'\r          <div class="img-circle-container">'+
 				'\r            <img class="img-circle" src="'+foto+'" alt="foto de '+investigadores[i+y].nombre+'" width="140" height="140">'+
@@ -186,8 +188,8 @@ function renderInvestigadores () {
 				'\r        </div><!-- /.col-lg-4 -->'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="https://languagecreativityandidentity.com/miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="https://languagecreativityandidentity.com/miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
 
 
 
@@ -231,7 +233,7 @@ function renderDoctorandos () {
 				foto = "info-miembros/"+doctorandos[i+y].foto;
 			}
 			$('#doctorandos .'+rowDynamic).append(
-	    '\r    <a href="'+doctorandos[i+y].enlace_a_web+'">'+
+	    '\r    <a href="'+doctorandos[i+y].enlace_a_web+'" member-title="doctorandos" member-index="'+[i+y]+'">'+
 	    '\r      <div class="col-md-4">'+
 	    '\r        <img class="img-members center-block" src="'+foto+'" alt="foto de '+doctorandos[i+y].nombre+'">'+
 			'\r        <div class="text-center proyecto-descripcion">'+
@@ -241,8 +243,8 @@ function renderDoctorandos () {
 	    '\r      </div>'+
 	    '\r    </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="https://languagecreativityandidentity.com/miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="https://languagecreativityandidentity.com/miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
 
 
 		}
@@ -264,7 +266,7 @@ function renderPHD () {
 		yControl++;
 		var rowDynamic = 'row';
 		rowDynamicCountPhd++;
-		rowDynamic = rowDynamic + rowDynamicCountPhd
+		rowDynamic = rowDynamic + rowDynamicCountPhd;
 		$('#phd-thesis').append('<div  class="row '+rowDynamic+' proyectos-row row-phdTesis"></div');
 
     // Fill out PHD HTML
@@ -285,7 +287,7 @@ function renderPHD () {
 				foto = "info-miembros/"+phd_thesis[i+y].foto;
 			}
 			$('#phd-thesis .'+rowDynamic).append(
-				'\r      <a href="'+phd_thesis[i+y].enlace_a_web+'">'+
+				'\r      <a href="'+phd_thesis[i+y].enlace_a_web+'" member-title="phd_thesis" member-index="'+[i+y]+'">'+
 				'\r        <div id="" class="col-md-4">'+
 				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
 				'\r          <div class="text-center proyecto-descripcion">'+
@@ -295,8 +297,8 @@ function renderPHD () {
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>')
 
 
 		}
@@ -318,7 +320,7 @@ function renderColaboradores () {
 		yControl++;
 		var rowDynamic = 'row';
 		rowDynamicCountColaboradores++;
-		rowDynamic = rowDynamic + rowDynamicCountColaboradores
+		rowDynamic = rowDynamic + rowDynamicCountColaboradores;
 		$('#colaboradores').append('<div class="row '+rowDynamic+' proyectos-row row-colaboradores">');
 
     // Fill out COLABORADORES HTML
@@ -339,7 +341,7 @@ function renderColaboradores () {
 				foto = "info-miembros/"+colaboradores[i+y].foto;
 			}
 			$('#colaboradores .'+rowDynamic).append(
-				'\r      <a href="'+colaboradores[i+y].enlace_a_web+'">'+
+				'\r      <a href="'+colaboradores[i+y].enlace_a_web+'" member-title="colaboradores" member-index="'+[i+y]+'">'+
 				'\r        <div id="" class="col-md-4">'+
 				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
  				'\r          <div class="text-center proyecto-descripcion">'+
@@ -351,8 +353,8 @@ function renderColaboradores () {
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/dynamic-miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="https://languagecreativityandidentity.com/miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="https://languagecreativityandidentity.com/miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
 
 		}
 	}
@@ -413,3 +415,25 @@ else {
 	console.log('Too bad, no sessionStorage for us');
   window.addEventListener('DOMContentLoaded', initMiembros);
 }
+
+/* EVENTS LISTENERS
+ * Clicking on a members snippet redirects to a new page with the member information.
+ * In order to load dinamically the member info into the template 'ficha-miembro.html'
+ * the click event stores some parameters into the sessionStorage. These parameters
+ * are used as a help to render the content into 'ficha-miembros.html' page
+ */
+function addClickEventToMemberSnippet () {
+  $('.members-list .row a').on('click', actionOnClick);
+}
+var actionOnClick = function ( e ) {
+  e.preventDefault();
+  console.log('actionOnClick is working');
+  console.log($(this).attr('href'));
+  var miembro_title = $(this).attr('member-title');
+  var miembro_index = $(this).attr('member-index');
+  sessionStorage.setItem('miembro_title', miembro_title);
+  sessionStorage.setItem('miembro_index', miembro_index);
+  // window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+  window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+
+};
