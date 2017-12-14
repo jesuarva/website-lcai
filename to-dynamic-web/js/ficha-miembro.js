@@ -6,7 +6,7 @@ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1Rrs
 var tabletop;
 var investigadores;
 var doctorandos;
-var phd_thesis;
+var phdThesis;
 var colaboradores;
 var directora;
 var ficha_miembro;
@@ -43,6 +43,9 @@ function onSessionStorageLoad () {
 /* DEALING WITH DATA */
 function assignVariablesValuesFromSheet () {
  console.log('Hi from assignVariablesValuesFromSheet()');
+
+ assignUrlParameterValueToVariables();
+
  home = tabletop.sheets('home').all();
  sessionStorage.setItem('home', JSON.stringify(home));
  proyectos = tabletop.sheets('proyectos').all();
@@ -55,8 +58,8 @@ function assignVariablesValuesFromSheet () {
  sessionStorage.setItem('investigadores', JSON.stringify(investigadores));
  doctorandos = tabletop.sheets('doctorandos').all();
  sessionStorage.setItem('doctorandos', JSON.stringify(doctorandos));
- phd_thesis = tabletop.sheets('phd-thesis').all();
- sessionStorage.setItem('phd_thesis', JSON.stringify(phd_thesis));
+ phdThesis = tabletop.sheets('phdThesis').all();
+ sessionStorage.setItem('phdThesis', JSON.stringify(phdThesis));
  colaboradores = tabletop.sheets('colaboradores').all();
  sessionStorage.setItem('colaboradores', JSON.stringify(colaboradores));
 
@@ -65,10 +68,13 @@ function assignVariablesValuesFromSheet () {
 }
 function assignVariablesValuesFromSessionStorage () {
  console.log('Hi form assignVariablesValuesFromSessionStorage');
+
+ assignUrlParameterValueToVariables();
+
  directora = JSON.parse(sessionStorage.getItem('directora'));
  investigadores = JSON.parse(sessionStorage.getItem('investigadores'));
  doctorandos = JSON.parse(sessionStorage.getItem('doctorandos'));
- phd_thesis = JSON.parse(sessionStorage.getItem('phd_thesis'));
+ phdThesis = JSON.parse(sessionStorage.getItem('phdThesis'));
  colaboradores = JSON.parse(sessionStorage.getItem('colaboradores'));
 
  ficha_miembro = JSON.parse(sessionStorage.getItem(miembro_title));
@@ -260,8 +266,8 @@ function renderDoctorandos () {
 }
 function renderPHD () {
 
- console.log('phd :'+phd_thesis);
- var len = phd_thesis.length;
+ console.log('phd :'+phdThesis);
+ var len = phdThesis.length;
  var rowDynamicCountPhd = 0;
  var yControl = 0;
  var iterations = 0;
@@ -288,24 +294,24 @@ function renderPHD () {
    for ( y = 0; y < iterations; y++) {
      console.log(y);
      $('#phd-thesis .'+rowDynamic).prepend('<div class="" id="miembrop'+[i+y+1]+'"></div>');
-     if (phd_thesis[i+y].foto === "") {
+     if (phdThesis[i+y].foto === "") {
        foto = "https://picsum.photos/6"+i+y+"/6"+y+i;
      } else {
-       foto = "info-miembros/"+phd_thesis[i+y].foto;
+       foto = "info-miembros/"+phdThesis[i+y].foto;
      }
      $('#phd-thesis .'+rowDynamic).append(
-       '\r      <a href="'+phd_thesis[i+y].enlace_a_web+'" member-title="phd-thesis" member-index="'+[i+y]+'">'+
+       '\r      <a href="'+phdThesis[i+y].enlace_a_web+'" member-title="phd-thesis" member-index="'+[i+y]+'">'+
        '\r        <div id="" class="col-md-4">'+
        '\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
        '\r          <div class="text-center proyecto-descripcion">'+
-       '\r            <h3>'+phd_thesis[i+y].nombre+'</br>'+
+       '\r            <h3>'+phdThesis[i+y].nombre+'</br>'+
        '\r            </h3>'+
        '\r          </div>'+
        '\r        </div>'+
        '\r      </a>'
      );
-     $('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>');
-     $('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phd_thesis[i+y].nombre+'</a></li>');
+     $('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phdThesis[i+y].nombre+'</a></li>');
+     $('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phdThesis[i+y].nombre+'</a></li>');
 
 
    }
@@ -477,16 +483,17 @@ else {
 
 
 // Read URL parameters Function
-function getQueryVariable(variable)
-{
-       var query = window.location.search.substring(1);
-       var vars = query.split("&");
-       for (var i=0;i<vars.length;i++) {
-               var pair = vars[i].split("=");
-               if(pair[0] == variable){return pair[1];}
-       }
-       return(false);
+function getQueryVariable(variable) {
+         var query = window.location.search.substring(1);
+         var vars = query.split("&");
+         for (var i=0;i<vars.length;i++) {
+                 var pair = vars[i].split("=");
+                 if(pair[0] == variable){return pair[1];}
+         }
+         return(false);
 }
 
-miembro_title = getQueryVariable('miembro_title');
-miembro_index = getQueryVariable('miembro_index');
+function assignUrlParameterValueToVariables () {
+  miembro_title = getQueryVariable('miembro_title');
+  miembro_index = getQueryVariable('miembro_index');
+}
