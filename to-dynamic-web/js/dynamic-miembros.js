@@ -267,7 +267,7 @@ function renderPHD () {
 		var rowDynamic = 'row';
 		rowDynamicCountPhd++;
 		rowDynamic = rowDynamic + rowDynamicCountPhd;
-		$('#phd-thesis').append('<div  class="row '+rowDynamic+' proyectos-row row-phdTesis"></div');
+		$('#phd-thesis').append('<div  class="row '+rowDynamic+' proyectos-row row-phdThesis"></div');
 
     // Fill out PHD HTML
 		var y = 0;
@@ -420,7 +420,7 @@ else {
  * Clicking on a members snippet redirects to a new page with the member information.
  * In order to load dinamically the member info into the template 'ficha-miembro.html'
  * the click event stores some parameters into the sessionStorage. These parameters
- * are used as a help to render the content into the new landing page 'ficha-miembros.html'.
+ * are used as a help to render the content into 'ficha-miembros.html' page
  */
 function addClickEventToMemberSnippet () {
   $('.members-list .row a').on('click', actionOnClick);
@@ -431,9 +431,17 @@ var actionOnClick = function ( e ) {
   console.log($(this).attr('href'));
   var miembro_title = $(this).attr('member-title');
   var miembro_index = $(this).attr('member-index');
+  var currentUrl = window.location.href;
+	console.log(currentUrl);
   sessionStorage.setItem('miembro_title', miembro_title);
   sessionStorage.setItem('miembro_index', miembro_index);
-  // window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
-  window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+
+  // Check if current URL has attr 'idioma=en' to concatenate a new URL according to this attr.
+	if (currentUrl.indexOf('idioma=en')) {
+		window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?idioma=en&miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+	} else {
+		window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+	}
+
 
 };

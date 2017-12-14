@@ -28,12 +28,14 @@ function onSheetsLoad () {
   console.log('Hi from onsheetLoad()');
   assignVariablesValuesFromSheet();
   renderContent();
+	addClickEventToMemberSnippet();
 
 }
 function onSessionStorageLoad () {
   console.log('Hi from onSessionStorageLoad()');
   assignVariablesValuesFromSessionStorage();
   renderContent();
+	addClickEventToMemberSnippet();
 
 }
 
@@ -79,7 +81,7 @@ function renderContent () {
 /* BUILD DOM STRUCTURE */
 function renderDirectora () {
 
-	console.log('directora :'+directora);
+	// console.log('directora :'+directora);
 	var len = directora.length;
 	var rowDynamicCountDirectora = 0;
 	var yControl = 0;
@@ -103,7 +105,7 @@ function renderDirectora () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#directora .'+rowDynamic).prepend('<div class="" id="miembro'+[i+y+1]+'"></div>');
 			if (directora[i+y].foto === "") {
 				foto = "https://picsum.photos/4"+i+y+"/3"+y+i;
@@ -136,7 +138,7 @@ function renderDirectora () {
 }
 function renderInvestigadores () {
 
-	console.log('investigadores :'+investigadores);
+	// console.log('investigadores :'+investigadores);
 	var len = investigadores.length
 	var rowDynamicCountInvestigadores = 0;
 	var yControl = 0;
@@ -161,13 +163,13 @@ function renderInvestigadores () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#investigadores .'+rowDynamic).prepend('<div class="" id="miembroi'+[i+y+1]+'"></div>');
 			if (investigadores[i+y].foto === "") {
 				foto = "https://picsum.photos/8"+i+y+"/8"+y+i;
 			} else {
 				foto = +investigadores[i+y].foto;
-				console.log(foto);
+				// console.log(foto);
 				// foto = foto.toString();
 				// console.log(foto);
 				// fotoControl = foto.indexOf(".dropbox");
@@ -199,7 +201,7 @@ function renderInvestigadores () {
 }
 function renderDoctorandos () {
 
-	console.log('doctorandos :'+doctorandos);
+	// console.log('doctorandos :'+doctorandos);
 	var len = doctorandos.length;
 	var rowDynamicCountDoctorandos = 0;
 	var yControl = 0;
@@ -225,7 +227,7 @@ function renderDoctorandos () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#doctorandos .'+rowDynamic).prepend('<div class="" id="miembrod'+[i+y+1]+'"></div>');
 			if (doctorandos[i+y].foto === "") {
 				foto = "https://picsum.photos/7"+i+y+"/7"+y+i;
@@ -253,7 +255,7 @@ function renderDoctorandos () {
 }
 function renderPHD () {
 
-	console.log('phd :'+phdThesis);
+	// console.log('phd :'+phdThesis);
 	var len = phdThesis.length;
 	var rowDynamicCountPhd = 0;
 	var yControl = 0;
@@ -279,7 +281,7 @@ function renderPHD () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#phd-thesis .'+rowDynamic).prepend('<div class="" id="miembrop'+[i+y+1]+'"></div>');
 			if (phdThesis[i+y].foto === "") {
 				foto = "https://picsum.photos/6"+i+y+"/6"+y+i;
@@ -307,7 +309,7 @@ function renderPHD () {
 }
 function renderColaboradores () {
 
-	console.log('colaboradores :'+colaboradores);
+	// console.log('colaboradores :'+colaboradores);
 	var len = colaboradores.length;
 	var rowDynamicCountColaboradores = 0;
 	var yControl = 0;
@@ -333,7 +335,7 @@ function renderColaboradores () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#colaboradores .'+rowDynamic).prepend('<div class="" id="miembroc'+[i+y+1]+'"></div>');
 			if (colaboradores[i+y].foto === "") {
 				foto = "https://picsum.photos/5"+i+y+"/5"+y+i;
@@ -362,7 +364,7 @@ function renderColaboradores () {
 }
 function renderProyectos () {
 
-	console.log('proyectos :'+proyectos);
+	// console.log('proyectos :'+proyectos);
 	var len = proyectos.length;
 	var rowDynamicCountproyectos = 0;
 	var yControl = 0;
@@ -386,7 +388,7 @@ function renderProyectos () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#proyectos .'+rowDynamic).prepend('<div class="" id="proyecto'+[i+y+1]+'"></div>');
 			if (proyectos[i+y].foto === "") {
 				foto = "https://picsum.photos/7"+i+y+"/7"+y+i;
@@ -395,13 +397,15 @@ function renderProyectos () {
 			}
 			$('#proyectos .'+rowDynamic).append(
         '\r   <div class="col-md-4">'+
-        '\r     <img class="img-proyecto" src="'+foto+'" alt="imágen Proyecto'+proyectos[i+y].proyecto_es+'">'+
-        '\r     <div class="proyecto-descripcion español">'+
-        '\r       <h3>'+proyectos[i+y].proyecto_es+'</h3>'+
-        '\r     </div>'+
-        '\r     <div class="proyecto-descripcion ingles noVisible">'+
-        '\r       <h3>'+proyectos[i+y].proyecto_en+'</h3>'+
-        '\r     </div>'+
+        '\r   	<a href="" proyecto-title="proyectos" proyecto-index="'+[i+y]+'">'+
+        '\r   	  <img class="img-proyecto" src="'+foto+'" alt="imágen Proyecto'+proyectos[i+y].proyecto_es+'">'+
+        '\r     	<div class="proyecto-descripcion español">'+
+        '\r       	<h3>'+proyectos[i+y].title_es+'</h3>'+
+        '\r    	 </div>'+
+        '\r    	 <div class="proyecto-descripcion ingles noVisible">'+
+        '\r     	  <h3>'+proyectos[i+y].title_en+'</h3>'+
+        '\r    	 </div>'+
+        '\r   	</a>'+
         '\r   </div>'
 			);
 
@@ -465,3 +469,34 @@ else {
 	console.log('Too bad, no sessionStorage for us');
   window.addEventListener('DOMContentLoaded', initMiembros);
 }
+
+
+/* EVENTS LISTENERS
+ * Clicking on a project snippet redirects to a new page with the project information.
+ * In order to load dinamically the project info into the template 'ficha-proyecto.html'
+ * the click event stores some parameters into the sessionStorage and add this parameters
+ * as attributes to URL.
+ * These parameters are used as a base to render the content into 'ficha-miembros.html' page
+ */
+function addClickEventToMemberSnippet () {
+  $('#proyectos .row a').on('click', actionOnClick);
+}
+var actionOnClick = function ( e ) {
+  e.preventDefault();
+  console.log('actionOnClick is working');
+  console.log($(this).attr('href'));
+  var proyecto_title = $(this).attr('proyecto-title');
+  var proyecto_index = $(this).attr('proyecto-index');
+	var currentUrl = window.location.href;
+	console.log(currentUrl);
+  sessionStorage.setItem('proyecto_title', proyecto_title);
+  sessionStorage.setItem('miembro_index', proyecto_index);
+
+	// Check if current URL has attr 'idioma=en' to concatenate a new URL according to this attr.
+	if (currentUrl.indexOf('idioma=en')) {
+		window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-proyecto.html?idioma=en&proyecto_title='+proyecto_title+'&proyecto_index='+proyecto_index;
+	} else {
+		window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-proyecto.html?proyecto_title='+proyecto_title+'&proyecto_index='+proyecto_index;
+	}
+
+};

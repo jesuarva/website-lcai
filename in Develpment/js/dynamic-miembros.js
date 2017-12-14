@@ -431,9 +431,17 @@ var actionOnClick = function ( e ) {
   console.log($(this).attr('href'));
   var miembro_title = $(this).attr('member-title');
   var miembro_index = $(this).attr('member-index');
+  var currentUrl = window.location.href;
+	console.log(currentUrl);
   sessionStorage.setItem('miembro_title', miembro_title);
   sessionStorage.setItem('miembro_index', miembro_index);
-  // window.location = 'https://languagecreativityandidentity.com/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
-  window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+
+  // Check if current URL has attr 'idioma=en' to concatenate a new URL according to this attr.
+	if (currentUrl.indexOf('idioma=en')) {
+		window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-miembro.html?idioma=en&miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+	} else {
+		window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-miembro.html?miembro_title='+miembro_title+'&miembro_index='+miembro_index;
+	}
+
 
 };

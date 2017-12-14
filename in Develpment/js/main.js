@@ -15,12 +15,12 @@ $(function () {
 			$('.seccion').each(function(index){
 				var hrefOriginal = $(this).attr('href');
 				$(this).attr('href', hrefOriginal+'?idioma=en')
-				console.log(this);
+				// console.log(this);
 			});
 			$('.members').each(function(index){
 				var hrefOriginal = $(this).attr('href');
 				$(this).attr('href', hrefOriginal+'?idioma=en')
-				console.log(this);
+				// console.log(this);
 			});
 		} else { // if language change back to Spanish again -> then remove the navbar>a.href parameter
 			$('.idioma-cambia').attr('idioma', 'es');
@@ -36,25 +36,25 @@ $(function () {
 			});
 		}
 		console.log('Cambiado idioma a: '+$('.idioma-cambia').attr('idioma'));
-		console.log("hurrah and yihaaah - idioma cambiado");
+		// console.log("hurrah and yihaaah - idioma cambiado");
 	});
 
 	// LANGUAGE: RENDER CONTENT IN SELECTED LANGUAGE
   // READ navbar>a.href attribute and if is in the URL toggle content into English.
 	if(window.location.href.indexOf('idioma=en') >= 0){
-		console.log('true');
+		// console.log('true');
 		$('.español').toggleClass('noVisible');
 		$('.ingles').toggleClass('noVisible');
 		$('.idioma-cambia').attr('idioma', 'en');
 		$('.seccion').each(function(index){
 			var hrefOriginal = $(this).attr('href');
 			$(this).attr('href', hrefOriginal+'?idioma=en')
-			console.log(this);
+			// console.log(this);
 		});
 		$('.members').each(function(index){
 			var hrefOriginal = $(this).attr('href');
 			$(this).attr('href', hrefOriginal+'?idioma=en')
-			console.log(this);
+			// console.log(this);
 		});
   }
 
