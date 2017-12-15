@@ -380,7 +380,7 @@ function renderProyectos () {
 
     // Fill out proyectos HTML
 		var y = 0;
-		var foto;
+		var foto1;
 		// Me define el número de veces que debo iterar el segundo for anidado. Tal que sólo itere el número total de 'rows' que tenga el Sheet y no más (así no da ERROR y para la ejecución del script).
 		if (yControl <= Math.floor(len / 3)) {
 			iterations = 3;
@@ -390,15 +390,15 @@ function renderProyectos () {
 		for ( y = 0; y < iterations; y++) {
 			// console.log(y);
 			$('#proyectos .'+rowDynamic).prepend('<div class="" id="proyecto'+[i+y+1]+'"></div>');
-			if (proyectos[i+y].foto === "") {
-				foto = "https://picsum.photos/7"+i+y+"/7"+y+i;
+			if (!proyectos[i+y].foto1) {
+				foto1 = "https://picsum.photos/7"+i+y+"/7"+y+i;
 			} else {
-				foto = "img/"+proyectos[i+y].foto;
+				foto1 = proyectos[i+y].foto1;
 			}
 			$('#proyectos .'+rowDynamic).append(
         '\r   <div class="col-md-4">'+
         '\r   	<a href="" proyecto-title="proyectos" proyecto-index="'+[i+y]+'">'+
-        '\r   	  <img class="img-proyecto" src="'+foto+'" alt="imágen Proyecto'+proyectos[i+y].proyecto_es+'">'+
+        '\r   	  <img class="img-proyecto" src='+foto1+' alt="imágen Proyecto'+proyectos[i+y].proyecto_es+'">'+
         '\r     	<div class="proyecto-descripcion español">'+
         '\r       	<h3>'+proyectos[i+y].title_es+'</h3>'+
         '\r    	 </div>'+

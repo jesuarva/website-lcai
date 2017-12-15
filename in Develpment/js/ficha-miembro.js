@@ -380,6 +380,7 @@ function renderFichaMiembros () {
   rowDynamicCountficha_miembro++;
   rowDynamic = rowDynamic + rowDynamicCountficha_miembro;
   $('#ficha-miembro').append('<div class="row '+rowDynamic+' featurette row-directora">');
+  $('.sub-header .row').append('<h1 class="col-md-12 ingles noVisible">'+ficha_miembro[miembro_index].nombre+'</h1>');
 
   // Fill out ficha_miembro HTML
   var y = 0;
@@ -387,23 +388,26 @@ function renderFichaMiembros () {
 
   console.log(y);
   $('#ficha-miembro .'+rowDynamic).prepend('<div class="" id="'+miembro_title+miembro_index+'"></div>');
-  if (ficha_miembro[miembro_index].foto === "") {
+  if (!ficha_miembro[miembro_index].foto) {
   foto = "https://picsum.photos/4"+miembro_index+miembro_index+1+"/3"+miembro_index+miembro_index+2;
   } else {
-  foto = "info-miembros/"+ficha_miembro[miembro_index].foto;
+  foto = ficha_miembro[miembro_index].foto;
   }
   $('#ficha-miembro .'+rowDynamic).append(
     '\r   <div id="'+miembro_title+miembro_index+'" class="col-md-5">'+
-    '\r     <img class="featurette-image img-responsive center-block" src="'+foto+'" alt="Generic placeholder image">'+
+    '\r          <div class="img-circle-container">'+
+    '\r            <img class="img-circle" src='+foto+' alt="foto de '+ficha_miembro[miembro_index].nombre+'" width="170" height="200">'+
+    '\r          </div>'+
     '\r   </div>'+
     '\r   <div class="col-md-7">'+
-    '\r     <h2 class="featurette-heading">'+ficha_miembro[miembro_index].nombre+
+    '\r     <h2 class="featurette-heading">'+
     '\r       <span class="text-muted español">'+ficha_miembro[miembro_index].title_es+'</span>'+
     '\r       <span class="text-muted ingles noVisible">'+ficha_miembro[miembro_index].title_en+'</span>'+
     '\r     </h2>'+
     '\r     <p class="lead español">'+ficha_miembro[miembro_index].universidad_es+'<br><a class="text-muted" href="mailto:'+ficha_miembro[miembro_index].email+'">'+ficha_miembro[miembro_index].email+'<a></p>'+
+    '\r     <p class="lead español">'+ficha_miembro[miembro_index].universidad_es+'<br><a class="text-muted" href="mailto:'+ficha_miembro[miembro_index].email+'">'+ficha_miembro[miembro_index].email+'<a></p>'+
     '\r     <p class="lead ingles noVisible">'+ficha_miembro[miembro_index].universidad_en+'<br><a class="text-muted" href="mailto:'+ficha_miembro[miembro_index].email+'">'+ficha_miembro[miembro_index].email+'<a></p>'+
-    '\r     <p class="lead español"><a href="'+ficha_miembro[miembro_index].enlace_a_web+'">'+ficha_miembro[miembro_index].enlace_a_web+'</a></p>'+
+    '\r     <p class="lead español"><a href="">'+ficha_miembro[miembro_index].enlace_a_web+'</a></p>'+
     '\r   </div>'
   );
   $('#ficha-miembro').append('<div class="row row2 featurette row-directora">');

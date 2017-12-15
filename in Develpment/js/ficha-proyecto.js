@@ -382,24 +382,35 @@ function renderFichaProyecto () {
 
   $('.sub-header .row').append('<h1 class="col-md-12 español">'+ficha_proyecto[proyecto_index].title_es+'</h1>');
   $('.sub-header .row').append('<h1 class="col-md-12 ingles noVisible">'+ficha_proyecto[proyecto_index].title_en+'</h1>');
-  $('#ficha-proyecto').append('<div class="row '+rowDynamic+' featurette row-directora">');
+  $('#ficha-proyecto').append('<div class="row '+rowDynamic+' row-directora">');
+  $('#ficha-proyecto .'+rowDynamic).prepend('<div class="" id="'+proyecto_title+proyecto_index+'"></div>');
 
   // Fill out ficha_proyecto HTML
   var y = 0;
-  var foto;
-
-  console.log(y);
-  $('#ficha-proyecto .'+rowDynamic).prepend('<div class="" id="'+proyecto_title+proyecto_index+'"></div>');
-  if (ficha_proyecto[proyecto_index].foto === "") {
-  foto = "https://picsum.photos/4"+proyecto_index+proyecto_index+1+"/3"+proyecto_index+proyecto_index+2;
+  var foto1;
+  var foto2;
+  var foto3;
+  var foto4;
+  if (!ficha_proyecto[proyecto_index].foto1) {
+  foto1 = "'https://picsum.photos/4"+proyecto_index+proyecto_index+1+"/3"+proyecto_index+proyecto_index+2+"'";
   } else {
-  foto = "info-miembros/"+ficha_proyecto[proyecto_index].foto;
+  foto1 = ficha_proyecto[proyecto_index].foto1;
   }
-
-  // TODO foto2 y foto3 osn temporales -> borrar tras implementar carga de varias fotos
-  var foto2 = "https://picsum.photos/4"+proyecto_index+2+"/590";
-  var foto3 = "https://picsum.photos/4"+proyecto_index+3+"/580";
-  var foto4 = "https://picsum.photos/5"+proyecto_index+4+"/600";
+  if (!ficha_proyecto[proyecto_index].foto2) {
+  foto2 = "'https://picsum.photos/5"+proyecto_index+2+"/600'";
+  } else {
+  foto2 = ficha_proyecto[proyecto_index].foto2;
+  }
+  if (!ficha_proyecto[proyecto_index].foto3) {
+  foto3 = "'https://picsum.photos/4"+proyecto_index+3+"/580'";
+  } else {
+  foto3 = ficha_proyecto[proyecto_index].foto3;
+  }
+  if (!ficha_proyecto[proyecto_index].foto4) {
+  foto4 = "'https://picsum.photos/5"+proyecto_index+4+"/600'";
+  } else {
+  foto4 = ficha_proyecto[proyecto_index].foto4;
+  }
 
 
   $('#ficha-proyecto .'+rowDynamic).append(
@@ -412,16 +423,16 @@ function renderFichaProyecto () {
     '\r     <p class="ingles noVisible">'+ficha_proyecto[proyecto_index].description_en+'</p>'+
     '\r   </div>'+
     '\r   <div class="col-md-7">'+
-    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src="'+foto+'" alt="Generic placeholder image">'+
-    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src="'+foto2+'" alt="Generic placeholder image">'+
+    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src='+foto1+' alt="Generic placeholder image">'+
+    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src='+foto2+' alt="Generic placeholder image">'+
     '\r   </div>'
   );
-  $('#ficha-proyecto').append('<div class="row row2 featurette row-directora">');
+  $('#ficha-proyecto').append('<div class="row row2 row-directora">');
   $('#ficha-proyecto .row2').append(
     '\r   <div id="vacio" class="col-md-1"></div>'+
     '\r   <div id="'+proyecto_title+proyecto_index+'-detalle" class="col-md-10">'+
-    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src="'+foto3+'" alt="Generic placeholder image">'+
-    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src="'+foto4+'" alt="Generic placeholder image">'+
+    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src='+foto3+' alt="Generic placeholder image">'+
+    '\r     <img class="featurette-image img-responsive img-ficha-proyecto center-block" src='+foto4+' alt="Generic placeholder image">'+
     '\r   </div>'+
     '\r   <div id="vacio" class="col-md-1"></div>'
   );

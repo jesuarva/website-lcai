@@ -1,5 +1,4 @@
 
-
 console.log("hola, desde dynamic-miembros.js");
 
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1RrsvF7Twfjp83SV-myjBFz6TUsZNM2jnFc/edit?usp=sharing';
@@ -43,9 +42,6 @@ function onSessionStorageLoad () {
 /* DEALING WITH DATA */
 function assignVariablesValuesFromSheet () {
  console.log('Hi from assignVariablesValuesFromSheet()');
-
- assignUrlParameterValueToVariables();
-
  home = tabletop.sheets('home').all();
  sessionStorage.setItem('home', JSON.stringify(home));
  proyectos = tabletop.sheets('proyectos').all();
@@ -68,9 +64,6 @@ function assignVariablesValuesFromSheet () {
 }
 function assignVariablesValuesFromSessionStorage () {
  console.log('Hi form assignVariablesValuesFromSessionStorage');
-
- assignUrlParameterValueToVariables();
-
  directora = JSON.parse(sessionStorage.getItem('directora'));
  investigadores = JSON.parse(sessionStorage.getItem('investigadores'));
  doctorandos = JSON.parse(sessionStorage.getItem('doctorandos'));
@@ -300,7 +293,7 @@ function renderPHD () {
        foto = "info-miembros/"+phdThesis[i+y].foto;
      }
      $('#phd-thesis .'+rowDynamic).append(
-       '\r      <a href="'+phdThesis[i+y].enlace_a_web+'" member-title="phd-thesis" member-index="'+[i+y]+'">'+
+       '\r      <a href="'+phdThesis[i+y].enlace_a_web+'" member-title="phdThesis" member-index="'+[i+y]+'">'+
        '\r        <div id="" class="col-md-4">'+
        '\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
        '\r          <div class="text-center proyecto-descripcion">'+
@@ -387,6 +380,7 @@ function renderFichaMiembros () {
   rowDynamicCountficha_miembro++;
   rowDynamic = rowDynamic + rowDynamicCountficha_miembro;
   $('#ficha-miembro').append('<div class="row '+rowDynamic+' featurette row-directora">');
+  $('.sub-header .row').append('<h1 class="col-md-12 ingles noVisible">'+ficha_miembro[miembro_index].nombre+'</h1>');
 
   // Fill out ficha_miembro HTML
   var y = 0;
@@ -394,23 +388,26 @@ function renderFichaMiembros () {
 
   console.log(y);
   $('#ficha-miembro .'+rowDynamic).prepend('<div class="" id="'+miembro_title+miembro_index+'"></div>');
-  if (ficha_miembro[miembro_index].foto === "") {
+  if (!ficha_miembro[miembro_index].foto) {
   foto = "https://picsum.photos/4"+miembro_index+miembro_index+1+"/3"+miembro_index+miembro_index+2;
   } else {
-  foto = "info-miembros/"+ficha_miembro[miembro_index].foto;
+  foto = ficha_miembro[miembro_index].foto;
   }
   $('#ficha-miembro .'+rowDynamic).append(
     '\r   <div id="'+miembro_title+miembro_index+'" class="col-md-5">'+
-    '\r     <img class="featurette-image img-responsive center-block" src="'+foto+'" alt="Generic placeholder image">'+
+    '\r          <div class="img-circle-container">'+
+    '\r            <img class="img-circle" src='+foto+' alt="foto de '+ficha_miembro[miembro_index].nombre+'" width="170" height="200">'+
+    '\r          </div>'+
     '\r   </div>'+
     '\r   <div class="col-md-7">'+
-    '\r     <h2 class="featurette-heading">'+ficha_miembro[miembro_index].nombre+
+    '\r     <h2 class="featurette-heading">'+
     '\r       <span class="text-muted español">'+ficha_miembro[miembro_index].title_es+'</span>'+
     '\r       <span class="text-muted ingles noVisible">'+ficha_miembro[miembro_index].title_en+'</span>'+
     '\r     </h2>'+
     '\r     <p class="lead español">'+ficha_miembro[miembro_index].universidad_es+'<br><a class="text-muted" href="mailto:'+ficha_miembro[miembro_index].email+'">'+ficha_miembro[miembro_index].email+'<a></p>'+
+    '\r     <p class="lead español">'+ficha_miembro[miembro_index].universidad_es+'<br><a class="text-muted" href="mailto:'+ficha_miembro[miembro_index].email+'">'+ficha_miembro[miembro_index].email+'<a></p>'+
     '\r     <p class="lead ingles noVisible">'+ficha_miembro[miembro_index].universidad_en+'<br><a class="text-muted" href="mailto:'+ficha_miembro[miembro_index].email+'">'+ficha_miembro[miembro_index].email+'<a></p>'+
-    '\r     <p class="lead español"><a href="'+ficha_miembro[miembro_index].enlace_a_web+'">'+ficha_miembro[miembro_index].enlace_a_web+'</a></p>'+
+    '\r     <p class="lead español"><a href="">'+ficha_miembro[miembro_index].enlace_a_web+'</a></p>'+
     '\r   </div>'
   );
   $('#ficha-miembro').append('<div class="row row2 featurette row-directora">');
@@ -483,17 +480,16 @@ else {
 
 
 // Read URL parameters Function
-function getQueryVariable(variable) {
-         var query = window.location.search.substring(1);
-         var vars = query.split("&");
-         for (var i=0;i<vars.length;i++) {
-                 var pair = vars[i].split("=");
-                 if(pair[0] == variable){return pair[1];}
-         }
-         return(false);
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
 }
 
-function assignUrlParameterValueToVariables () {
-  miembro_title = getQueryVariable('miembro_title');
-  miembro_index = getQueryVariable('miembro_index');
-}
+miembro_title = getQueryVariable('miembro_title');
+miembro_index = getQueryVariable('miembro_index');

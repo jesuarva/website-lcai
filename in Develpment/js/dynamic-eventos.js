@@ -388,16 +388,16 @@ function renderEventos () {
 		for ( y = 0; y < iterations; y++) {
 			console.log(y);
 			$('#eventos .'+rowDynamic).prepend('<div class="" id="evento'+[i+y+1]+'"></div>');
-			if (eventos[i+y].foto === "") {
+			if (!eventos[i+y].foto) {
 				foto = "https://picsum.photos/10"+i+y+"/10"+y+i;
 			} else {
-				foto = "cartel-y-folletos/"+eventos[i+y].foto;
+				foto = eventos[i+y].foto;
 			}
 			$('#eventos .'+rowDynamic).append(
         '\r <div class="col-md-6">'+
         '\r   <div href="#Modal-'+[i+y+1]+'" class="modal-trigger" data-toggle="modal">'+
         '\r     <!-- width 480 , heigth 245 -->'+
-        '\r     <img class="img-proyecto" src="'+foto+'" alt="Imágen del evento'+[i+y+1]+'">'+
+        '\r     <img class="img-proyecto" src='+foto+' alt="Imágen del evento'+[i+y+1]+'">'+
         '\r     <div class="proyecto-descripcion español">'+
         '\r       <h3>'+eventos[i+y].evento_es+'</h3>'+
         '\r     </div>'+
@@ -417,11 +417,11 @@ function renderEventos () {
         '\r                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
         '\r             </div>'+
         '\r             <div class="modal-body">'+
-        '\r                 <img class="img-responsive" alt="Cartel evento '+eventos[i+y].evento_es+'" title="Cartel evento '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].cartel+'">'+
+        '\r                 <img class="img-responsive" alt="Cartel evento '+eventos[i+y].evento_es+'" title="Cartel evento '+eventos[i+y].evento_es+'" src='+eventos[i+y].cartel+'>'+
         '\r                 <hr class="featurette-divider">'+
-        '\r                 <img class="img-responsive" alt="Frontal del folleto para '+eventos[i+y].evento_es+'" title="Frontal del folleto para '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].folleto_frontal+'">'+
+        '\r                 <img class="img-responsive" alt="Frontal del folleto para '+eventos[i+y].evento_es+'" title="Frontal del folleto para '+eventos[i+y].evento_es+'" src='+eventos[i+y].folleto_frontal+'>'+
         '\r                 <hr class="featurette-divider">'+
-        '\r                 <img class="img-responsive" alt="Reverso del folleto para '+eventos[i+y].evento_es+'" title="Reverso del folleto para '+eventos[i+y].evento_es+'" src="cartel-y-folletos/'+eventos[i+y].folleto_reverso+'">'+
+        '\r                 <img class="img-responsive" alt="Reverso del folleto para '+eventos[i+y].evento_es+'" title="Reverso del folleto para '+eventos[i+y].evento_es+'" src='+eventos[i+y].folleto_reverso+'>'+
         '\r             </div>'+
         '\r             <div class="modal-footer">'+
         '\r                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>'+

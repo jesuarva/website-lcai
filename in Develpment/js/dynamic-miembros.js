@@ -1,4 +1,4 @@
- console.log("hola, desde dynamic-miembros.js");
+console.log("hola, desde dynamic-miembros.js");
 
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1oOnKqQim1RrsvF7Twfjp83SV-myjBFz6TUsZNM2jnFc/edit?usp=sharing';
 var tabletop;
@@ -25,7 +25,7 @@ function initMiembros() {
 
 /* RENDER CONTENT */
 function onSheetsLoad () {
-  console.log('Hi from onsheetLoad()');
+  // console.log('Hi from onsheetLoad()');
   assignVariablesValuesFromSheet();
   renderContent();
   addClickEventToMemberSnippet();
@@ -79,7 +79,7 @@ function renderContent () {
 /* BUILD DOM STRUCTURE */
 function renderDirectora () {
 
-	console.log('directora :'+directora);
+	// console.log('directora :'+directora);
 	var len = directora.length;
 	var rowDynamicCountDirectora = 0;
 	var yControl = 0;
@@ -103,17 +103,19 @@ function renderDirectora () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#directora .'+rowDynamic).prepend('<div class="" id="miembro'+[i+y+1]+'"></div>');
-			if (directora[i+y].foto === "") {
+			if (!directora[i+y].foto) {
+        console.log('No hay foto');
 				foto = "https://picsum.photos/4"+i+y+"/3"+y+i;
 			} else {
-				foto = "info-miembros/"+directora[i+y].foto;
+        console.log('Sí hay foto');
+				foto = directora[i+y].foto;
 			}
 			$('#directora .'+rowDynamic).append(
 				'\r <a href="'+directora[i+y].enlace_a_web+'" member-title="directora" member-index="'+[i+y]+'">'+
 				'\r   <div id="miembro1" class="col-md-5">'+
-				'\r     <img class="featurette-image img-responsive center-block" src="'+foto+'" alt="Generic placeholder image">'+
+				'\r     <img class="featurette-image img-responsive center-block" src='+foto+' alt="Generic placeholder image">'+
 				'\r   </div>'+
 				'\r   <div class="col-md-7">'+
 				'\r     <h2 class="featurette-heading">'+directora[i+y].nombre+
@@ -136,7 +138,7 @@ function renderDirectora () {
 }
 function renderInvestigadores () {
 
-	console.log('investigadores :'+investigadores);
+	// console.log('investigadores :'+investigadores);
 	var len = investigadores.length;
 	var rowDynamicCountInvestigadores = 0;
 	var yControl = 0;
@@ -161,24 +163,20 @@ function renderInvestigadores () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#investigadores .'+rowDynamic).prepend('<div class="" id="miembroi'+[i+y+1]+'"></div>');
-			if (investigadores[i+y].foto === "") {
+			if (!investigadores[i+y].foto) {
 				foto = "https://picsum.photos/8"+i+y+"/8"+y+i;
 			} else {
-				foto = +investigadores[i+y].foto;
-				console.log(foto);
-				// foto = foto.toString();
-				// console.log(foto);
-				// fotoControl = foto.indexOf(".dropbox");
-				// console.log(fotoControl);
-				// foto = "https://dl"+foto.slice(fotoControl);
-				// console.log(foto);
+        console.log('Sí hay foto');
+				foto = investigadores[i+y].foto;
+        // console.log(investigadores[i+y].foto);
+        // console.log(foto);
 			}
 			$('#investigadores .'+rowDynamic).append('<a href="'+investigadores[i+y].enlace_a_web+'" member-title="investigadores" member-index="'+[i+y]+'">'+
 				'\r        <div class="text-center col-lg-4">'+
 				'\r          <div class="img-circle-container">'+
-				'\r            <img class="img-circle" src="'+foto+'" alt="foto de '+investigadores[i+y].nombre+'" width="140" height="140">'+
+				'\r            <img class="img-circle" src='+foto+' alt="foto de '+investigadores[i+y].nombre+'" width="140" height="140">'+
 				'\r          </div>'+
 				'\r          <h3>'+investigadores[i+y].nombre+'</br>'+
 				'\r          </h3>'+
@@ -199,7 +197,7 @@ function renderInvestigadores () {
 }
 function renderDoctorandos () {
 
-	console.log('doctorandos :'+doctorandos);
+	// console.log('doctorandos :'+doctorandos);
 	var len = doctorandos.length;
 	var rowDynamicCountDoctorandos = 0;
 	var yControl = 0;
@@ -225,17 +223,17 @@ function renderDoctorandos () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#doctorandos .'+rowDynamic).prepend('<div class="" id="miembrod'+[i+y+1]+'"></div>');
-			if (doctorandos[i+y].foto === "") {
+			if (!doctorandos[i+y].foto) {
 				foto = "https://picsum.photos/7"+i+y+"/7"+y+i;
 			} else {
-				foto = "info-miembros/"+doctorandos[i+y].foto;
+				foto = doctorandos[i+y].foto;
 			}
 			$('#doctorandos .'+rowDynamic).append(
 	    '\r    <a href="'+doctorandos[i+y].enlace_a_web+'" member-title="doctorandos" member-index="'+[i+y]+'">'+
 	    '\r      <div class="col-md-4">'+
-	    '\r        <img class="img-members center-block" src="'+foto+'" alt="foto de '+doctorandos[i+y].nombre+'">'+
+	    '\r        <img class="img-members center-block" src='+foto+' alt="foto de '+doctorandos[i+y].nombre+'">'+
 			'\r        <div class="text-center proyecto-descripcion">'+
 	    '\r          <h3>'+doctorandos[i+y].nombre+'</br>'+
 	    '\r          </h3>'+
@@ -253,7 +251,7 @@ function renderDoctorandos () {
 }
 function renderPHD () {
 
-	console.log('phd :'+phdThesis);
+	// console.log('phd :'+phdThesis);
 	var len = phdThesis.length;
 	var rowDynamicCountPhd = 0;
 	var yControl = 0;
@@ -279,17 +277,17 @@ function renderPHD () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#phd-thesis .'+rowDynamic).prepend('<div class="" id="miembrop'+[i+y+1]+'"></div>');
-			if (phdThesis[i+y].foto === "") {
+			if (!phdThesis[i+y].foto) {
 				foto = "https://picsum.photos/6"+i+y+"/6"+y+i;
 			} else {
-				foto = "info-miembros/"+phdThesis[i+y].foto;
+				foto = phdThesis[i+y].foto;
 			}
 			$('#phd-thesis .'+rowDynamic).append(
 				'\r      <a href="'+phdThesis[i+y].enlace_a_web+'" member-title="phdThesis" member-index="'+[i+y]+'">'+
 				'\r        <div id="" class="col-md-4">'+
-				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
+				'\r          <img class="img-members center-block" src='+foto+' alt="">'+
 				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <h3>'+phdThesis[i+y].nombre+'</br>'+
 				'\r            </h3>'+
@@ -307,7 +305,7 @@ function renderPHD () {
 }
 function renderColaboradores () {
 
-	console.log('colaboradores :'+colaboradores);
+	// console.log('colaboradores :'+colaboradores);
 	var len = colaboradores.length;
 	var rowDynamicCountColaboradores = 0;
 	var yControl = 0;
@@ -333,17 +331,17 @@ function renderColaboradores () {
 			iterations = len % 3;
 		}
 		for ( y = 0; y < iterations; y++) {
-			console.log(y);
+			// console.log(y);
 			$('#colaboradores .'+rowDynamic).prepend('<div class="" id="miembroc'+[i+y+1]+'"></div>');
-			if (colaboradores[i+y].foto === "") {
+			if (!colaboradores[i+y].foto) {
 				foto = "https://picsum.photos/5"+i+y+"/5"+y+i;
 			} else {
-				foto = "info-miembros/"+colaboradores[i+y].foto;
+				foto = colaboradores[i+y].foto;
 			}
 			$('#colaboradores .'+rowDynamic).append(
 				'\r      <a href="'+colaboradores[i+y].enlace_a_web+'" member-title="colaboradores" member-index="'+[i+y]+'">'+
 				'\r        <div id="" class="col-md-4">'+
-				'\r          <img class="img-members center-block" src="'+foto+'" alt="">'+
+				'\r          <img class="img-members center-block" src='+foto+' alt="">'+
  				'\r          <div class="text-center proyecto-descripcion">'+
 				'\r            <h3>'+colaboradores[i+y].nombre+'</br>'+
 				'\r            </h3>'+
