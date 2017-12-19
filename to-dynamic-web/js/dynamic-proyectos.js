@@ -493,7 +493,7 @@ var actionOnClick = function ( e ) {
   sessionStorage.setItem('miembro_index', proyecto_index);
 
 	// Check if current URL has attr 'idioma=en' to concatenate a new URL according to this attr.
-	if (currentUrl.indexOf('idioma=en')) {
+	if ($('.idioma-cambia').attr('idioma') == 'en') {
 		window.location = 'https://languagecreativityandidentity.com/ficha-proyecto.html?idioma=en&proyecto_title='+proyecto_title+'&proyecto_index='+proyecto_index;
 	} else {
 		window.location = 'https://languagecreativityandidentity.com/ficha-proyecto.html?proyecto_title='+proyecto_title+'&proyecto_index='+proyecto_index;

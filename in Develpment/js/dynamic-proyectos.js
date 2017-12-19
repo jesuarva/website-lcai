@@ -493,7 +493,7 @@ var actionOnClick = function ( e ) {
   sessionStorage.setItem('miembro_index', proyecto_index);
 
 	// Check if current URL has attr 'idioma=en' to concatenate a new URL according to this attr.
-	if (currentUrl.indexOf('idioma=en')) {
+	if ($('.idioma-cambia').attr('idioma') == 'en') {
 		window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-proyecto.html?idioma=en&proyecto_title='+proyecto_title+'&proyecto_index='+proyecto_index;
 	} else {
 		window.location = 'http://localhost/~jesuarva/lcai%20-%20Cristina%20Palmese/in%20Develpment/ficha-proyecto.html?proyecto_title='+proyecto_title+'&proyecto_index='+proyecto_index;
