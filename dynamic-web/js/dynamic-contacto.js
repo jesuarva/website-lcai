@@ -118,8 +118,8 @@ function renderDirectora () {
 				'\r   </div>'+
 				'\r </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="https://languagecreativityandidentity.com/miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="https://languagecreativityandidentity.com/miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Cordinadora" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembro'+[i+y+1]+'">'+directora[i+y].nombre+'</a></li>')
 
 
 
@@ -181,8 +181,8 @@ function renderInvestigadores () {
 				'\r        </div><!-- /.col-lg-4 -->'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="https://languagecreativityandidentity.com/miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="https://languagecreativityandidentity.com/miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Investigador" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembroi'+[i+y+1]+'">'+investigadores[i+y].nombre+'</a></li>')
 
 
 
@@ -236,8 +236,8 @@ function renderDoctorandos () {
 	    '\r      </div>'+
 	    '\r    </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="https://languagecreativityandidentity.com/miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="https://languagecreativityandidentity.com/miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Doctorando" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembrod'+[i+y+1]+'">'+doctorandos[i+y].nombre+'</a></li>')
 
 
 		}
@@ -290,8 +290,8 @@ function renderPHD () {
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phdThesis[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.com/miembros.html#miembrop'+[i+y+1]+'">'+phdThesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembrop'+[i+y+1]+'">'+phdThesis[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Phd - Tesis" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembrop'+[i+y+1]+'">'+phdThesis[i+y].nombre+'</a></li>')
 
 
 		}
@@ -346,8 +346,8 @@ function renderColaboradores () {
 				'\r        </div>'+
 				'\r      </a>'
 			);
-			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="https://languagecreativityandidentity.com/miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
-			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="https://languagecreativityandidentity.com/miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.ingles .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
+			$('.navbar-nav.español .dropdown-menu').append('<li><a class="members" titulo="Colaboradores" href="https://languagecreativityandidentity.jesuarva.com/miembros.html#miembroc'+[i+y+1]+'">'+colaboradores[i+y].nombre+'</a></li>')
 
 		}
 	}

@@ -67,9 +67,9 @@ $(function () {
 			$('.dropdown-toggle').click(function( e ){
 				e.preventDefault();
 				if ($('.idioma-cambia').attr('idioma') === 'en') {
-					window.location = "https://languagecreativityandidentity.com/miembros.html?idioma=en";
+					window.location = "https://languagecreativityandidentity.jesuarva.com/miembros.html?idioma=en";
 				} else {
-					window.location = "https://languagecreativityandidentity.com/miembros.html";
+					window.location = "https://languagecreativityandidentity.jesuarva.com/miembros.html";
 				}
 			});
   	})
